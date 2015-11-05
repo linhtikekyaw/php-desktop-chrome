@@ -93,6 +93,7 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
+CakePlugin::load( 'DebugKit' );
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'

@@ -5787,3 +5787,51 @@ n_v1-9-6/phpliteadmin.php?view=vacuum
 - 13:01:56.457 DEBUG: OnBrowserDestroyed()
 - 13:01:56.283 INFO: Ended application
 - 13:01:56.299 INFO: --------------------------------------------------------
+- 13:49:19.343 INFO: --------------------------------------------------------
+- 13:49:19.343 INFO: Started application
+- 13:49:19.343 INFO: Logging to: C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\debug.log
+- 13:49:19.343 INFO: Log level = DEBUG4
+- 13:49:19.343 INFO: Starting Mongoose 3.9c web server
+- 13:49:19.343 INFO: WWW directory: C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\www
+- 13:49:19.343 INFO: Index files: index.html,index.php
+- 13:49:19.343 INFO: CGI interpreter: C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\php\php-cgi.exe
+- 13:49:19.343 INFO: CGI pattern: **.php$
+- 13:49:19.343 INFO: CGI environment variables set: TMP=C:\Users\lin\AppData\Local\Temp\,TEMP=C:\Users\lin\AppData\Local\Temp\,TMPDIR=C:\Users\lin\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=31.8
+- 13:49:19.358 INFO: Web server url: http://127.0.0.1:54248/
+- 13:49:19.390 INFO: remote_debugging_port = 53440
+- 13:49:19.468 DEBUG: Command line string for the browser process: "C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\phpdesktop-chrome.exe" --lang=en-US --log-file="C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\debug.log" --remote-debugging-port=53440 --no-sandbox
+[1105/134921:ERROR:gpu_info_collector_win.cc(102)] Can't retrieve a valid WinSAT assessment.
+- 13:49:21.872 DEBUG: App::OnContextInitialized()
+- 13:49:21.872 DEBUG: Window max width/height = 1840/1000
+- 13:49:21.872 DEBUG: GetBrowserWindow(): not found, hwnd = 985282
+- 13:49:21.872 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 13:49:21.887 DEBUG: BrowserWindow::CreateBrowserControl()
+- 13:49:21.887 DEBUG: StoreBrowserWindow(): hwnd = 985282
+- 13:49:21.934 DEBUG: BrowserWindow::OnSize() failed: CefBrowser object not created yet
+- 13:49:21.184 DEBUG: ClientHandler::OnAfterCreated()
+- 13:49:21.199 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 13:49:21.230 INFO: DPI, ppix = 96, ppiy = 96
+- 13:49:21.230 INFO: DPI, browser zoom level = 0
+- 13:49:22.542 DEBUG: OnLoadingStateChange: loading=1, url=
+- 13:49:22.016 DEBUG: Command line string for the renderer process: "C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\phpdesktop-chrome.exe" --type=renderer --no-sandbox --lang=en-US --lang=en-US --log-file="C:\Users\lin\Desktop\php-desktop-chrome\phpdesktop-chrome-31.8-php-5.6.1\debug.log" --disable-gl-multisampling --disable-accelerated-2d-canvas --disable-accelerated-video-decode --channel="5620.0.752354522\950734184" /prefetch:673131151
+- 13:49:23.358 DEBUG: OnBrowserCreated()
+- 13:49:28.344 INFO: GET 200 /
+- 13:49:28.818 DEBUG: OnContextCreated()
+- 13:49:28.469 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:54248/
+- 13:49:30.497 DEBUG: OnLoadingStateChange: loading=1, url=http://127.0.0.1:54248/
+- 13:49:32.250 DEBUG: OnContextCreated()
+- 13:49:32.854 INFO: GET 200 /cakephp/app/webroot/css/cake.generic.css
+- 13:49:32.963 INFO: GET 200 /cakephp/app/webroot/img/cake.icon.png
+- 13:49:32.010 INFO: GET 200 /cakephp/index.php
+- 13:49:32.026 INFO: GET 200 /cakephp/app/webroot/img/cake.power.gif
+- 13:49:32.197 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:54248/cakephp/index.php
+- 13:49:35.880 DEBUG: WM_DESTROY
+- 13:49:35.880 DEBUG: RemoveBrowserWindow(): hwnd = 985282
+- 13:49:35.880 INFO: Stopping Mongoose web server
+- 13:49:35.880 DEBUG: Mongoose webserver stopped immediately
+- 13:49:35.896 DEBUG: RemoveBrowserWindow(): hwnd = 3016364
+- 13:49:35.896 DEBUG: GetBrowserWindow(): not found, hwnd = 3016364
+- 13:49:35.896 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 13:49:35.401 DEBUG: OnBrowserDestroyed()
+- 13:49:36.879 INFO: Ended application
+- 13:49:36.879 INFO: --------------------------------------------------------
