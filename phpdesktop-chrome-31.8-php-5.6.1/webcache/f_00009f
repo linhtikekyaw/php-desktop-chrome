@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
+		CakePHP: the rapid development php framework:
+		Accepth	</title>
+	<link href="/app/webroot/favicon.ico" type="image/x-icon" rel="icon" /><link href="/app/webroot/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/cake.generic.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/jquery.dataTables.css" />
+	
+	<script type="text/javascript" src="/app/webroot/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootswatch.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/jquery.dataTables.min.js"></script>
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body class="" style="">
+<!--
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid"">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand">販売管理者システム</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+        </div>
+      </div>
+    </div>
+-->
+        <!-- /.row -->
+    		
+			<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"></span>受注入力</h3>
+                </div>
+                <div class="col-md-12">            
+                          <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-default"><-前</a>
+						    <a href="#" class="btn btn-default">次-></a>
+						    <a href="#" class="btn btn-default" id="update">更新</a>
+						    <a href="#" class="btn btn-default" id="reset">取消</a>
+						    <a href="#" class="btn btn-default" id="close">閉じる</a>
+						  </div>
+						  						  <br>
+						  	<div><font color="red">登録しました。</font></div>
+						  <br>
+						  				<div class="panel panel-default">
+					<div class="panel-heading clearfix top_box half_input">
+						<div class="box pull-left ">				
+							<table border="0" cellspacing="5" cellpadding="5" class="accepth borderless">
+								<tbody>
+									<tr>
+										<th>受注番号</th>
+										<td><input type="text" id="" class="ACCNO" readonly="readonly" name="ACCNO" value="0000000001"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div>
+					<div class="panel-heading clearfix search_box">
+						<div class="box pull-left half_input">
+					<table border="0" cellspacing="5" cellpadding="5" class="accepth">
+						<tbody>
+							<!--
+							<tr>
+								<td>受注番号</td>
+								<td><input type="text" id="" class="ACCNO" readonly="readonly" name="ACCNO" value="0000000001"></td>
+							</tr>
+							-->
+							<tr>
+								<th>見積番号</th>
+								<td><input type="text" id="" class="ESTNO" name="ESTNO" value=""></td>
+							</tr>
+							<tr>
+								<th>得意先コード</th>
+								<td><input type="text" id="code" class="CUSTCD" name="CUSTCD" value="00001"><input type="text" id="custname" value="清水商店" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<th>納入先コード</th>
+								<td><input type="text" id="" class="CUSTCD3" name="CUSTCD3" value="111"></td>
+							</tr>
+							<tr>
+								<th>納入先名</th>
+								<td>
+									<input type="text" id="" class="CUSTNM3" name="CUSTNM3" value="テスト">
+								</td>
+							</tr>
+							<tr>
+								<th>相手先発注番号</th>
+								<td>
+									<input type="text" id="" class="CUATACCNO" name="CUATACCNO" value="22222">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box pull-right half_input">
+					<table border="0" cellspacing="5" cellpadding="5" id="data_form" class="accepth">
+						<tbody>
+							<tr>
+								<th>受注日</th>
+								<td><input type="text" class="datetimepicker ACCDT" id="ACCDT" name="ACCDT" value="2015/07/15"></td>
+							</tr>
+							<tr>
+								<th>納期</th>
+								<td><input type="text" class="datetimepicker RETURNDT" name="RETURNDT" value="2015/07/24"></td>
+							</tr>
+							<tr>
+								<th>出荷予定日</th>
+								<td><input type="text" class="datetimepicker SHIDT" name="SHIDT" value="2015/07/28"></td>
+							</tr>
+							<tr>
+								<th>担当者</th>
+								<td><input type="text" class="PERSONCD" name="PERSONCD" value="テストテスト"></td>
+							</tr>
+							<tr>
+								<th>伝票備考</th>
+								<td><input type="text" class="BIKO" name="BIKO" value="ああああああ"></td>
+							</tr>
+							<tr>
+								<th>完了区分</th>
+								<td>
+																										<label><input type="radio" class="ENDKB" name="ENDKB" value="0" >未完</label>&nbsp;
+																										<label><input type="radio" class="ENDKB" name="ENDKB" value="1" checked>完了</label>&nbsp;
+																</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+						  <table class="table table-striped table-bordered hover table-condensed" style="table-layout:fixed" id="add_new">
+						  <thead>
+							      <tr>
+							        <td rowspan="2" width="30px">No</td>
+							        <td width="115px">明細区部</td>
+							        <td width="100px">商品コード</td>
+							        <td width="250px">商品名</td>
+							        <td width="80px">ケース数</td>
+							        <td width="80px">入数</td>
+							        <td width="100px">販売単価</td>
+							        <td width="100px">金額</td>
+							        <td rowspan="2" width="150px">備考</td>
+							        <td rowspan="2" width="100px"></td>
+							      </tr>
+							      <tr>
+							        <td width="115px">税区分</td>
+							        <td width="100px"></td>
+							        <td width="250px">規格</td>
+							        <td width="80px">バラ数</td>
+							        <td width="80px">単位</td>
+							        <td width="100px">標準単価</td>
+							        <td width="100px"></td>
+							      </tr>
+							</thead>
+							    <tbody>
+							    							    								<tr>
+									<td rowspan="2" width="30px"></td>
+									<td class="LINCLS" width="115px">
+									<SELECT name="LINCLS">
+																				<OPTION value="1" selected>受注</OPTION>
+																				<OPTION value="5" >値引</OPTION>
+																				<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																			</SELECT>
+									</td>
+									<td width="100px"><div class="ITEMCD" contenteditable = 'true'>1000000017</div></td>
+									<td width="250px"><div class="ITEMNM1" contenteditable = 'true'>商品名１０００００００１７■■</div></td>
+									<td width="80px"><div class="CAQTY" contenteditable = 'true'>3</div></td>
+									<td width="80px"><div class="IRQTY" contenteditable = 'true'>7</div></td>
+									<td width="100px"><div class="SALPRC" contenteditable = 'true'>12000.00</div></td>
+									<td width="100px"><div class="AMT" contenteditable = 'true'>372000.00</div></td>
+									<td width="150px"><div class="BIKO1" contenteditable = 'true'>備考</div></td>
+									<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+							      </tr>
+							      <tr>
+									<td class="TAXKB">
+									<SELECT name="TAXKB">
+																				<OPTION value="1" selected>課税対象</OPTION>
+																				<OPTION value="2" >課税対象外</OPTION>
+																				<OPTION value="9" >非課税</OPTION>
+																			</SELECT>
+									</td>
+									<td></td>
+									<td><div class="ITEMNM2" contenteditable = 'true'></div></td>
+									<td><div class="BAQTY" contenteditable = 'true'>10</div></td>
+									<td><div class="UNIT" contenteditable = 'true'></div></td>
+									<td><div class="PRC" contenteditable = 'true'>0.00</div></td>
+									<td></td>
+									<td class="BIKO2"><div contenteditable = 'true'></div></td>
+							      </tr>
+																<tr>
+									<td rowspan="2" width="30px"></td>
+									<td class="LINCLS" width="115px">
+									<SELECT name="LINCLS">
+																				<OPTION value="1" selected>受注</OPTION>
+																				<OPTION value="5" >値引</OPTION>
+																				<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																			</SELECT>
+									</td>
+									<td width="100px"><div class="ITEMCD" contenteditable = 'true'>1000000014</div></td>
+									<td width="250px"><div class="ITEMNM1" contenteditable = 'true'>商品名１０００００００１４■■</div></td>
+									<td width="80px"><div class="CAQTY" contenteditable = 'true'>3</div></td>
+									<td width="80px"><div class="IRQTY" contenteditable = 'true'>4</div></td>
+									<td width="100px"><div class="SALPRC" contenteditable = 'true'>12000.00</div></td>
+									<td width="100px"><div class="AMT" contenteditable = 'true'>144000.00</div></td>
+									<td width="150px"><div class="BIKO1" contenteditable = 'true'></div></td>
+									<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+							      </tr>
+							      <tr>
+									<td class="TAXKB">
+									<SELECT name="TAXKB">
+																				<OPTION value="1" selected>課税対象</OPTION>
+																				<OPTION value="2" >課税対象外</OPTION>
+																				<OPTION value="9" >非課税</OPTION>
+																			</SELECT>
+									</td>
+									<td></td>
+									<td><div class="ITEMNM2" contenteditable = 'true'></div></td>
+									<td><div class="BAQTY" contenteditable = 'true'>0</div></td>
+									<td><div class="UNIT" contenteditable = 'true'></div></td>
+									<td><div class="PRC" contenteditable = 'true'>0.00</div></td>
+									<td></td>
+									<td class="BIKO2"><div contenteditable = 'true'></div></td>
+							      </tr>
+																<tr>
+									<td rowspan="2" width="30px"></td>
+									<td class="LINCLS" width="115px">
+									<SELECT name="LINCLS">
+																				<OPTION value="1" >受注</OPTION>
+																				<OPTION value="5" selected>値引</OPTION>
+																				<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																			</SELECT>
+									</td>
+									<td width="100px"><div class="ITEMCD" contenteditable = 'true'>1000000014</div></td>
+									<td width="250px"><div class="ITEMNM1" contenteditable = 'true'>商品名１０００００００１４■■</div></td>
+									<td width="80px"><div class="CAQTY" contenteditable = 'true'>11111111</div></td>
+									<td width="80px"><div class="IRQTY" contenteditable = 'true'>4</div></td>
+									<td width="100px"><div class="SALPRC" contenteditable = 'true'>12000.00</div></td>
+									<td width="100px"><div class="AMT" contenteditable = 'true'>533333328000.00</div></td>
+									<td width="150px"><div class="BIKO1" contenteditable = 'true'></div></td>
+									<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+							      </tr>
+							      <tr>
+									<td class="TAXKB">
+									<SELECT name="TAXKB">
+																				<OPTION value="1" selected>課税対象</OPTION>
+																				<OPTION value="2" >課税対象外</OPTION>
+																				<OPTION value="9" >非課税</OPTION>
+																			</SELECT>
+									</td>
+									<td></td>
+									<td><div class="ITEMNM2" contenteditable = 'true'></div></td>
+									<td><div class="BAQTY" contenteditable = 'true'>0</div></td>
+									<td><div class="UNIT" contenteditable = 'true'></div></td>
+									<td><div class="PRC" contenteditable = 'true'>0.00</div></td>
+									<td></td>
+									<td class="BIKO2"><div contenteditable = 'true'></div></td>
+							      </tr>
+																								
+																       <tr>
+										<td rowspan="2" width="30px"></td>
+										<td class="LINCLS" width="115px">
+										<SELECT name="LINCLS">
+																						<OPTION value="1" selected>受注</OPTION>
+																						<OPTION value="5" >値引</OPTION>
+																						<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																					</SELECT>
+										</td>
+										<td width="100px"><div class="ITEMCD" contenteditable = 'true'></div></td>
+										<td width="250px"><div class="ITEMNM1" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="CAQTY" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="IRQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="SALPRC" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="AMT" contenteditable = 'true'></div></td>
+										<td width="150px"><div class="BIKO1" contenteditable = 'true'></div></td>
+										<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+								      </tr>
+								      <tr>
+										<td class="TAXKB">
+										<SELECT name="TAXKB">
+																						<OPTION value="1" selected>課税対象</OPTION>
+																						<OPTION value="2" >課税対象外</OPTION>
+																						<OPTION value="9" >非課税</OPTION>
+																					</SELECT>
+										</td>
+										<td></td>
+										<td width="100px"><div class="ITEMNM2" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="BAQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="UNIT" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="PRC" contenteditable = 'true'></div></td>
+										<td width="100px"></td>
+										<td><div class="BIKO2" contenteditable = 'true'></div></td>
+								      </tr>
+								      								       <tr>
+										<td rowspan="2" width="30px"></td>
+										<td class="LINCLS" width="115px">
+										<SELECT name="LINCLS">
+																						<OPTION value="1" selected>受注</OPTION>
+																						<OPTION value="5" >値引</OPTION>
+																						<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																					</SELECT>
+										</td>
+										<td width="100px"><div class="ITEMCD" contenteditable = 'true'></div></td>
+										<td width="250px"><div class="ITEMNM1" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="CAQTY" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="IRQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="SALPRC" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="AMT" contenteditable = 'true'></div></td>
+										<td width="150px"><div class="BIKO1" contenteditable = 'true'></div></td>
+										<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+								      </tr>
+								      <tr>
+										<td class="TAXKB">
+										<SELECT name="TAXKB">
+																						<OPTION value="1" selected>課税対象</OPTION>
+																						<OPTION value="2" >課税対象外</OPTION>
+																						<OPTION value="9" >非課税</OPTION>
+																					</SELECT>
+										</td>
+										<td></td>
+										<td width="100px"><div class="ITEMNM2" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="BAQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="UNIT" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="PRC" contenteditable = 'true'></div></td>
+										<td width="100px"></td>
+										<td><div class="BIKO2" contenteditable = 'true'></div></td>
+								      </tr>
+								      								       <tr>
+										<td rowspan="2" width="30px"></td>
+										<td class="LINCLS" width="115px">
+										<SELECT name="LINCLS">
+																						<OPTION value="1" selected>受注</OPTION>
+																						<OPTION value="5" >値引</OPTION>
+																						<OPTION value="9" >ｺﾒﾝﾄ</OPTION>
+																					</SELECT>
+										</td>
+										<td width="100px"><div class="ITEMCD" contenteditable = 'true'></div></td>
+										<td width="250px"><div class="ITEMNM1" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="CAQTY" contenteditable = 'true'></div></td>
+										<td width="80px"><div class="IRQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="SALPRC" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="AMT" contenteditable = 'true'></div></td>
+										<td width="150px"><div class="BIKO1" contenteditable = 'true'></div></td>
+										<td rowspan="2" width="100px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+								      </tr>
+								      <tr>
+										<td class="TAXKB">
+										<SELECT name="TAXKB">
+																						<OPTION value="1" selected>課税対象</OPTION>
+																						<OPTION value="2" >課税対象外</OPTION>
+																						<OPTION value="9" >非課税</OPTION>
+																					</SELECT>
+										</td>
+										<td></td>
+										<td width="100px"><div class="ITEMNM2" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="BAQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="UNIT" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="PRC" contenteditable = 'true'></div></td>
+										<td width="100px"></td>
+										<td><div class="BIKO2" contenteditable = 'true'></div></td>
+								      </tr>
+								      								      															    </tbody>
+							    </table>
+				<div class="col-md-3 pull-right">				
+					<table border="0" cellspacing="5" cellpadding="5" class="accepth total_amount">
+						<tbody>
+							<tr>
+								<th class="bg-primary">合計金額</th>
+								<td><input type="text" id="total" class="TOTAL" name="TOTAL" value="533333844000.00" readonly="readonly"></td>
+							</tr>
+						</tbody>
+					</table>
+						</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog-confirm" title="取消" display="none">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>取消してもよろしいでしょうか?</p>
+</div>
+
+	<script type="text/javascript" src="/app/webroot/js/table_scroll.js"></script>
+ </div>
+      <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <div id="siteBottomInner" class="innerBox">
+          </div>
+        </div>
+        <div id="siteBottom">
+        <div id="siteBottomInner" class="innerBox">
+        </div>
+        </div>
+      </div>
+      </footer>
+<div class="container">
+<table class="cake-sql-log" id="cakeSqlLog_1446684833563aa8a1c1a268_75169412" summary="Cake SQL Log" cellspacing="0"><caption>(default) 7 queries took 16 ms</caption>	<thead>
+		<tr><th>Nr</th><th>Query</th><th>Error</th><th>Affected</th><th>Num. rows</th><th>Took (ms)</th></tr>
+	</thead>
+	<tbody>
+	<tr><td>1</td><td>SELECT `Accepth`.`ACCNO`, `Accepth`.`CUSTCD`, `Accepth`.`CUSTCD2`, `Accepth`.`CUSTCD3`, `Accepth`.`CUSTNM3`, `Accepth`.`ACCDT`, `Accepth`.`RETURNDT`, `Accepth`.`SHIDT`, `Accepth`.`PERSONCD`, `Accepth`.`CUATACCNO`, `Accepth`.`BIKO`, `Accepth`.`COPYNO`, `Accepth`.`ACCKB`, `Accepth`.`AMT`, `Accepth`.`TAX`, `Accepth`.`TOTAL`, `Accepth`.`ROOT`, `Accepth`.`ENDKB`, `Accepth`.`ESTNO`, `Accepth`.`INSUSER`, `Accepth`.`INSPROG`, `Accepth`.`INSDT`, `Accepth`.`UPDUSER`, `Accepth`.`UPDPRG`, `Accepth`.`UPDDT`, `Accepth`.`SECTCD` FROM `cakephp`.`t_accepth` AS `Accepth`   WHERE `Accepth`.`accno` = &#039;0000000001&#039;    LIMIT 1</td><td></td><td style="text-align: right">1</td><td style="text-align: right">1</td><td style="text-align: right">16</td></tr>
+<tr><td>2</td><td>SELECT `Acceptd`.`ID`, `Acceptd`.`ACCNO`, `Acceptd`.`SEQNO`, `Acceptd`.`LINENO`, `Acceptd`.`LINCLS`, `Acceptd`.`ITEMCD`, `Acceptd`.`ITEMNM1`, `Acceptd`.`ITEMNM2`, `Acceptd`.`CAQTY`, `Acceptd`.`BAQTY`, `Acceptd`.`IRQTY`, `Acceptd`.`UNIT`, `Acceptd`.`PRC`, `Acceptd`.`SALPRC`, `Acceptd`.`AMT`, `Acceptd`.`TAX`, `Acceptd`.`WEIGHT`, `Acceptd`.`BIKO1`, `Acceptd`.`BIKO2`, `Acceptd`.`TAXKB`, `Acceptd`.`INSUSER`, `Acceptd`.`INSPROG`, `Acceptd`.`INSDT`, `Acceptd`.`UPDUSER`, `Acceptd`.`UPDPRG`, `Acceptd`.`UPDDT` FROM `cakephp`.`t_acceptd` AS `Acceptd`   WHERE `Acceptd`.`ACCNO` = (&#039;0000000001&#039;)</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>3</td><td>SELECT `Cust`.`CUSTCD`, `Cust`.`CUSTKB`, `Cust`.`CUSTSNM`, `Cust`.`CUSTLNM`, `Cust`.`CUSTJNM`, `Cust`.`RESPECT`, `Cust`.`ZIPCD`, `Cust`.`ADD1`, `Cust`.`ADD2`, `Cust`.`TELNO`, `Cust`.`FAXNO`, `Cust`.`SECTNM`, `Cust`.`CUSTPRSN`, `Cust`.`URL`, `Cust`.`EMAIL`, `Cust`.`CONTACT`, `Cust`.`PERSONCD`, `Cust`.`CLASS1`, `Cust`.`CLASS2`, `Cust`.`CLASS3`, `Cust`.`TORDTS`, `Cust`.`TORDTE`, `Cust`.`BIKO1`, `Cust`.`BIKO2`, `Cust`.`ROOT`, `Cust`.`SERCHKB`, `Cust`.`INSUSER`, `Cust`.`INSPROG`, `Cust`.`INSDT`, `Cust`.`UPDUSER`, `Cust`.`UPDPRG`, `Cust`.`UPDDT`, `Cust`.`DELFLG`, `Cust`.`INVSECT` FROM `cakephp`.`m_cust` AS `Cust`   WHERE `Cust`.`custcd` = &#039;00001&#039;    LIMIT 1</td><td></td><td style="text-align: right">1</td><td style="text-align: right">1</td><td style="text-align: right">0</td></tr>
+<tr><td>4</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CODR&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>5</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;TAXKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>6</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;ENDKB&#039;</td><td></td><td style="text-align: right">2</td><td style="text-align: right">2</td><td style="text-align: right">0</td></tr>
+<tr><td>7</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CUSTKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+	</tbody></table>
+	
+	<script type="text/javascript" src="/app/webroot/js/common.js"></script>
+</div>
+</body>
+</html>

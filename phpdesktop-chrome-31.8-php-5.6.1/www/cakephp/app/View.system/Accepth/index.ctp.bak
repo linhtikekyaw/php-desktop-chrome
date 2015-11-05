@@ -1,0 +1,152 @@
+<div class="container top">
+	<div class="row">
+	        <div class="col-md-3">  
+				<h3 class="bg-primary">受注一覧</h3>
+			</div>
+	</div>
+	<div class="btn-group btn-group-justified">
+		<a href="#" class="btn btn-default" id="search">検索</a>
+		<a href="/cakephp/accepth/edit/" class="btn btn-default">新規</a>
+		<a href="#" class="btn btn-default edit">修正</a>
+		<a href="#" class="btn btn-default">削除</a>
+		<a href="#" class="btn btn-default">コピー</a>
+		<a href="#" class="btn btn-default">参照</a>
+		<a href="#" class="btn btn-default">印刷</a>
+		<a href="#" class="btn btn-default">CSV</a>
+		<a href="#" class="btn btn-default">発注登録</a>
+		<a href="#" class="btn btn-default">取消</a>
+		<a href="#" class="btn btn-default">閉じる</a>
+	</div>
+	<div class="btn-group btn-group-justified">
+		<a href="#" class="btn btn-primary">F1</a>
+		<a href="#" class="btn btn-primary">F3</a>
+		<a href="#" class="btn btn-primary">F5</a>
+		<a href="#" class="btn btn-primary">F6</a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary">F7</a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary">F11</a>
+		<a href="#" class="btn btn-primary">F12</a>
+	</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">                
+                <div class="col-md-12">            
+				<div class="col-md-5 pull-left">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>受注番号</td>
+								<td><input type="text" size="10" id="" name="min"></td>
+							</tr>
+							<tr>
+								<td>得意先コード</td>
+								<td><input type="text" id="code" name="max"></td><td><input type="text" id="custname" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<td>担当者</td>
+								<td><input type="text" id="" name="min"></td>
+							</tr>
+							<tr>
+								<td>完了区分</td>
+								<td>
+									<SELECT>
+										<?php foreach($consts['ENDKB'] as $key => $val): ?>
+										<OPTION value="<?php echo $key; ?>" <?php echo $key=='0'?'selected':''; ?>><?php echo $val; ?></OPTION>
+										<?php endforeach; ?>
+									</SELECT>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4 pull-right">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>受注日</td>
+								<td><input type="text" class="datetimepicker" id="min" name="min"></td>
+								<td>～</td>
+								<td><input type="text" class="datetimepicker" id="max" name="max"></td>
+							</tr>
+							<tr>
+								<td>納期</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td>～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+							<tr>
+								<td>出荷予定日</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td>～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+							<tr>
+								<td>更新日</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td>～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+						  <table class="table table-bordered hover" style="table-layout:fixed" id="example">
+							    <thead>
+							      <tr class="bg-primary">
+							        <th>受注番号</th>
+							        <th>受注状態</th>
+							        <th>得意先コード</th>
+							        <th>得意先名</th>
+							        <th>受注日</th>
+							        <th>完了区分</th>
+							        <th>納期</th>
+							        <th>出荷予定日</th>
+							        <th>納入先コード</th>
+							        <th>納入先名</th>
+							        
+							        <th>担当者</th>
+							        <th>担当者名</th>
+							        <th>金額計</th>
+							        <th>受注金額</th>
+							        <th>相手先発注番号</th>
+							        <th>見積番号</th>
+							        <th>備考</th>
+							        <th>更新日</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							    <?php  foreach($accepths as $key => $val){ ?>
+							    <?php //print_r($val);?>
+							      <tr>
+									<td data-accno="<?php echo $val['Accepth']['ACCNO']; ?>"><?php echo $val['Accepth']['ACCNO']; ?></td>
+									<td><?php echo '受注'; ?></td>
+									<td><?php echo $val['Accepth']['CUSTCD']; ?></td>
+									<td><?php echo $val['Accepth']['CUSTNM3']; ?></td>
+									<td><?php echo $val['Accepth']['ACCDT']; ?></td>
+									<td><?php echo $consts['ENDKB'][$val['Accepth']['ENDKB']]; ?></td>
+									<td><?php echo $val['Accepth']['RETURNDT']; ?></td>
+									<td><?php echo $val['Accepth']['SHIDT']; ?></td>
+									<td><?php echo $val['Accepth']['CUSTCD3']; ?></td>
+									<td><?php echo $val['Accepth']['CUSTNM3']; ?></td>
+									
+									<td><?php echo $val['Accepth']['PERSONCD']; ?></td>
+									<td><?php echo $val['Accepth']['INSUSER']; ?></td>
+									<td><?php echo $val['Accepth']['TOTAL']; ?></td>
+									<td><?php echo $val['Accepth']['AMT']; ?></td>
+									<td><?php echo $val['Accepth']['CUATACCNO']; ?></td>
+									<td><?php echo $val['Accepth']['ESTNO']; ?></td>
+									<td><?php echo $val['Accepth']['BIKO']; ?></td>
+									<td><?php echo $val['Accepth']['UPDDT']; ?></td>
+							      </tr>
+							    <?php } ?>
+							    </tbody>
+							  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

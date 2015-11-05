@@ -1,0 +1,271 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"></span>受注入力</h3>
+                </div>
+                <div class="col-md-12">            
+                          <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-default"><-前</a>
+						    <a href="#" class="btn btn-default">次-></a>
+						    <a href="#" class="btn btn-default" id="update">更新</a>
+						    <a href="#" class="btn btn-default" id="reset">取消</a>
+						    <a href="#" class="btn btn-default" id="close">閉じる</a>
+						  </div>
+						  <?php if(!empty($message)): ?>
+						  <br>
+						  	<div><font color="red"><?php echo $message; ?></font></div>
+						  <br>
+						  <?php endif; ?>
+				<div class="panel panel-default">
+					<div class="panel-heading clearfix top_box half_input">
+						<div class="box pull-left ">				
+							<table border="0" cellspacing="5" cellpadding="5" class="accepth borderless">
+								<tbody>
+									<tr>
+										<th>受注番号</th>
+										<td><input type="text" id="" class="ACCNO" readonly="readonly" name="ACCNO" value="<?php if(!empty($data)): echo $data['Accepth']['ACCNO']; endif; ?>"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div>
+					<div class="panel-heading clearfix search_box">
+						<div class="box pull-left half_input">
+					<table border="0" cellspacing="5" cellpadding="5" class="accepth">
+						<tbody>
+							<!--
+							<tr>
+								<td>受注番号</td>
+								<td><input type="text" id="" class="ACCNO" readonly="readonly" name="ACCNO" value="<?php if(!empty($data)): echo $data['Accepth']['ACCNO']; endif; ?>"></td>
+							</tr>
+							-->
+							<tr>
+								<th>見積番号</th>
+								<td><input type="text" id="" class="ESTNO" name="ESTNO" value="<?php if(!empty($data)): echo $data['Accepth']['ESTNO']; endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>得意先コード</th>
+								<td><input type="text" id="code" class="CUSTCD" name="CUSTCD" value="<?php if(!empty($data)): echo $data['Accepth']['CUSTCD']; endif; ?>"><input type="text" id="custname" value="<?php if(!empty($data)): echo $data['Accepth']['CUSTNM']; endif; ?>" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<th>納入先コード</th>
+								<td><input type="text" id="" class="CUSTCD3" name="CUSTCD3" value="<?php if(!empty($data)): echo $data['Accepth']['CUSTCD3']; endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>納入先名</th>
+								<td>
+									<input type="text" id="" class="CUSTNM3" name="CUSTNM3" value="<?php if(!empty($data)): echo $data['Accepth']['CUSTNM3']; endif; ?>">
+								</td>
+							</tr>
+							<tr>
+								<th>相手先発注番号</th>
+								<td>
+									<input type="text" id="" class="CUATACCNO" name="CUATACCNO" value="<?php if(!empty($data)): echo $data['Accepth']['CUATACCNO']; endif; ?>">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box pull-right half_input">
+					<table border="0" cellspacing="5" cellpadding="5" id="data_form" class="accepth">
+						<tbody>
+							<tr>
+								<th>受注日</th>
+								<td><input type="text" class="datetimepicker ACCDT" id="ACCDT" name="ACCDT" value="<?php if(!empty($data)): echo date('Y/m/d', strtotime($data['Accepth']['ACCDT'])); endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>納期</th>
+								<td><input type="text" class="datetimepicker RETURNDT" name="RETURNDT" value="<?php if(!empty($data)): echo date('Y/m/d', strtotime($data['Accepth']['RETURNDT'])); endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>出荷予定日</th>
+								<td><input type="text" class="datetimepicker SHIDT" name="SHIDT" value="<?php if(!empty($data)): echo date('Y/m/d', strtotime($data['Accepth']['SHIDT'])); endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>担当者</th>
+								<td><input type="text" class="PERSONCD" name="PERSONCD" value="<?php if(!empty($data)): echo $data['Accepth']['PERSONCD']; endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>伝票備考</th>
+								<td><input type="text" class="BIKO" name="BIKO" value="<?php if(!empty($data)): echo $data['Accepth']['BIKO']; endif; ?>"></td>
+							</tr>
+							<tr>
+								<th>完了区分</th>
+								<td>
+								<?php foreach($consts['ENDKB'] as $key => $val): ?>
+									<?php $check= !empty($data)?$data['Accepth']['ENDKB']:'0'; ?>
+									<label><input type="radio" class="ENDKB" name="ENDKB" value="<?php echo $key; ?>" <?php echo $key==$check ? 'checked':''; ?>><?php echo $val; ?></label>&nbsp;
+								<?php endforeach; ?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<table class="table table-bordered table-condensed main">
+    						<thead>
+							      <tr>
+							        <th rowspan="2" width="30px">No</th>
+							        <th width="100px">明細区部</th>
+							        <th width="100px">商品コード</th>
+							        <th width="250px">商品名</th>
+							        <th width="80px">ケース数</th>
+							        <th width="80px">入数</th>
+							        <th width="100px">販売単価</th>
+							        <th width="100px">金額</th>
+							        <th rowspan="2" width="100px">備考</th>
+							        <th rowspan="2" width="50px"></th>
+							      </tr>
+							      <tr>
+							        <th width="100px">税区分</th>
+							        <th width="100px"></th>
+							        <th width="250px">規格</th>
+							        <th width="80px">バラ数</th>
+							        <th width="80px">単位</th>
+							        <th width="100px">標準単価</th>
+							        <th width="100px"></th>
+							      </tr>
+							</thead>
+		</table>
+		<div class="div-table-content">
+						  <table class="table table-striped table-bordered hover table-condensed" style="table-layout:fixed" id="add_new">
+							    <tbody class="scrollBody">
+							    <?php if(empty($data['Acceptd'])): ?>
+							       <?php for($i=1; $i<=6; $i++){ ?>
+								       <tr>
+										<td rowspan="2" width="30px"></td>
+										<td class="LINCLS" width="115px">
+										<SELECT name="LINCLS">
+											<?php foreach($consts['CODR'] as $num => $name): ?>
+											<OPTION value="<?php echo $num; ?>" <?php echo $num=='1'?'selected':''; ?>><?php echo $name; ?></OPTION>
+											<?php endforeach; ?>
+										</SELECT>
+										</td>
+										<td width="115px"><div class="ITEMCD" contenteditable = 'true'></div></td>
+										<td width="280px"><div class="ITEMNM1" contenteditable = 'true'></div></td>
+										<td width="90px"><div class="CAQTY" contenteditable = 'true'></div></td>
+										<td width="90px"><div class="IRQTY" contenteditable = 'true'></div></td>
+										<td><div class="SALPRC" contenteditable = 'true'></div></td>
+										<td width="120px"><div class="AMT" contenteditable = 'true'></div></td>
+										<td width="120px"><div class="BIKO1" contenteditable = 'true'></div></td>
+										<td rowspan="2" width="50px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+								      </tr>
+								      <tr>
+										<td class="TAXKB">
+										<SELECT name="TAXKB">
+											<?php foreach($consts['TAXKB'] as $num => $name): ?>
+											<OPTION value="<?php echo $num; ?>" <?php echo $num=='1'?'selected':''; ?>><?php echo $name; ?></OPTION>
+											<?php endforeach; ?>
+										</SELECT>
+										</td>
+										<td></td>
+										<td><div class="ITEMNM2" contenteditable = 'true'></div></td>
+										<td><div class="BAQTY" contenteditable = 'true'></div></td>
+										<td><div class="UNIT" contenteditable = 'true'></div></td>
+										<td><div class="PRC" contenteditable = 'true'></div></td>
+										<td></td>
+										<td width="50px"><div class="BIKO2" contenteditable = 'true'></div></td>
+								      </tr>
+								      <?php } ?>
+							    <?php else: ?>
+							    <?php foreach($data['Acceptd'] as $key => $val){ ?>
+								<tr>
+									<td rowspan="2" width="30px"></td>
+									<td class="LINCLS" width="115px">
+									<SELECT name="LINCLS">
+										<?php foreach($consts['CODR'] as $num => $name): ?>
+										<OPTION value="<?php echo $num; ?>" <?php echo $num==$val['LINCLS']?'selected':''; ?>><?php echo $name; ?></OPTION>
+										<?php endforeach; ?>
+									</SELECT>
+									</td>
+									<td width="115px"><div class="ITEMCD" contenteditable = 'true'><?php echo $val['ITEMCD']; ?></div></td>
+									<td width="280px"><div class="ITEMNM1" contenteditable = 'true'><?php echo $val['ITEMNM1']; ?></div></td>
+									<td width="90px"><div class="CAQTY" contenteditable = 'true'><?php echo floor($val['CAQTY']); ?></div></td>
+									<td width="90px"><div class="IRQTY" contenteditable = 'true'><?php echo floor($val['IRQTY']); ?></div></td>
+									<td width="100px"><div class="SALPRC" contenteditable = 'true'><?php echo sprintf("%01.2f",$val['SALPRC']); ?></div></td>
+									<td width="120px"><div class="AMT" contenteditable = 'true'><?php echo sprintf("%01.2f",$val['AMT']); ?></div></td>
+									<td width="120px"><div class="BIKO1" contenteditable = 'true'><?php echo $val['BIKO1']; ?></div></td>
+									<td rowspan="2"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+							      </tr>
+							      <tr>
+									<td class="TAXKB">
+									<SELECT name="TAXKB">
+										<?php foreach($consts['TAXKB'] as $num => $name): ?>
+										<OPTION value="<?php echo $num; ?>" <?php echo $num==$val['TAXKB']?'selected':''; ?>><?php echo $name; ?></OPTION>
+										<?php endforeach; ?>
+									</SELECT>
+									</td>
+									<td></td>
+									<td><div class="ITEMNM2" contenteditable = 'true'><?php //echo $val['ITEMNM2']; ?></div></td>
+									<td><div class="BAQTY" contenteditable = 'true'><?php echo floor($val['BAQTY']); ?></div></td>
+									<td><div class="UNIT" contenteditable = 'true'><?php echo $val['UNIT']; ?></div></td>
+									<td><div class="PRC" contenteditable = 'true'><?php echo sprintf("%01.2f", $val['PRC']); ?></div></td>
+									<td></td>
+									<td class="BIKO2"><div contenteditable = 'true'><?php echo $val['BIKO2']; ?></div></td>
+							      </tr>
+								<?php } ?>
+								<?php $count = count($data['Acceptd']); ?>
+								
+								<?php if($count<6){ for($i=1; $i<=(6-$count); $i++){ ?>
+								       <tr>
+										<td rowspan="2" width="30px"></td>
+										<td class="LINCLS" width="115px">
+										<SELECT name="LINCLS">
+											<?php foreach($consts['CODR'] as $num => $name): ?>
+											<OPTION value="<?php echo $num; ?>" <?php echo $num=='1'?'selected':''; ?>><?php echo $name; ?></OPTION>
+											<?php endforeach; ?>
+										</SELECT>
+										</td>
+										<td width="115px"><div class="ITEMCD" contenteditable = 'true'></div></td>
+										<td width="280px"><div class="ITEMNM1" contenteditable = 'true'></div></td>
+										<td width="90px"><div class="CAQTY" contenteditable = 'true'></div></td>
+										<td width="90px"><div class="IRQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="SALPRC" contenteditable = 'true'></div></td>
+										<td width="120px"><div class="AMT" contenteditable = 'true'></div></td>
+										<td width="120px"><div class="BIKO1" contenteditable = 'true'></div></td>
+										<td rowspan="2" width="50px"><button class="btn btn-primary btn-xs add_record">追加</button><button class="btn btn-danger btn-xs del_record">削除</button></td>
+								      </tr>
+								      <tr>
+										<td class="TAXKB">
+										<SELECT name="TAXKB">
+											<?php foreach($consts['TAXKB'] as $num => $name): ?>
+											<OPTION value="<?php echo $num; ?>" <?php echo $num=='1'?'selected':''; ?>><?php echo $name; ?></OPTION>
+											<?php endforeach; ?>
+										</SELECT>
+										</td>
+										<td></td>
+										<td width="100px"><div class="ITEMNM2" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="BAQTY" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="UNIT" contenteditable = 'true'></div></td>
+										<td width="100px"><div class="PRC" contenteditable = 'true'></div></td>
+										<td width="100px"></td>
+										<td><div class="BIKO2" contenteditable = 'true'></div></td>
+								      </tr>
+								      <?php } ?>
+								      <?php } ?>
+								<?php endif; ?>
+							    </tbody>
+							    </table>
+				</div>
+				<div class="col-md-3 pull-right">				
+					<table border="0" cellspacing="5" cellpadding="5" class="accepth total_amount">
+						<tbody>
+							<tr>
+								<th class="bg-primary">合計金額</th>
+								<td><input type="text" id="total" class="TOTAL" name="TOTAL" value="<?php if(!empty($data)): echo sprintf("%01.2f",$data['Accepth']['TOTAL']); endif; ?>" readonly="readonly"></td>
+							</tr>
+						</tbody>
+					</table>
+						</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog-confirm" title="取消" display="none">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>取消してもよろしいでしょうか?</p>
+</div>
+<?php //echo $this->Html->script(array('item')); ?>

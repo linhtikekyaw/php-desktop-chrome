@@ -1,0 +1,2774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
+		CakePHP: the rapid development php framework:
+		Cust	</title>
+	<link href="/app/webroot/favicon.ico" type="image/x-icon" rel="icon" /><link href="/app/webroot/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/cake.generic.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/jquery.dataTables.css" />
+	
+	<script type="text/javascript" src="/app/webroot/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootswatch.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/jquery.dataTables.min.js"></script>
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body class="" style="">
+<!--
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid"">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand">販売管理者システム</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+        </div>
+      </div>
+    </div>
+-->
+        <!-- /.row -->
+    		
+			<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"></span>取り引き先一覧</h3>
+                </div>
+                <div class="col-md-12">            
+                          <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-default">検索</a>
+						    <a href="#" id="add_new" class="btn btn-default">新規</a>
+						    <a href="#" class="btn btn-default">修正</a>
+						    <a href="#" class="btn btn-default">削除</a>
+						    <a href="#" class="btn btn-default">コピー</a>
+						    <a href="#" class="btn btn-default">照会</a>
+						    <a href="#" class="btn btn-default">印刷</a>
+						    <a href="#" class="btn btn-default">CSV</a>
+						    <a href="#" class="btn btn-default">締日印刷</a>
+						    <a href="#" class="btn btn-default">取消</a>
+						    <a href="#" class="btn btn-default">閉じる</a>
+						  </div>
+						  <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-primary">F1</a>
+						    <a href="#" class="btn btn-primary">F3</a>
+						    <a href="#" class="btn btn-primary">F5</a>
+						    <a href="#" class="btn btn-primary">F6</a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary">F7</a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary">F11</a>
+						    <a href="#" class="btn btn-primary">F12</a>
+						  </div>
+				<div class="panel panel-default half_input">
+					<div class="panel-heading clearfix">
+						<div class="box pull-left">
+							<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<th>取引先区分</th>
+								<td>
+									<SELECT>
+																			<OPTION value="0" selected>両方</OPTION>
+																			<OPTION value="1" >得意先</OPTION>
+																			<OPTION value="2" >仕入先</OPTION>
+																		</SELECT>
+								</td>
+							</tr>
+							<tr>
+								<th>取引先コード</th>
+								<td><input type="text" id="" name=""></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default">ア</button>
+						<button type="button" class="btn btn-default">カ</button>
+						<button type="button" class="btn btn-default">サ</button>
+						<button type="button" class="btn btn-default">タ</button>
+						<button type="button" class="btn btn-default">ナ</button>
+						<button type="button" class="btn btn-default">ハ</button>
+						<button type="button" class="btn btn-default">マ</button>
+						<button type="button" class="btn btn-default">ヤ</button>
+						<button type="button" class="btn btn-default">ラ</button>
+						<button type="button" class="btn btn-default">ワ</button>
+						<button type="button" class="btn btn-default">ABC</button>
+						<button type="button" class="btn btn-default">全</button>
+					</div>
+					<table border="0" cellspacing="5" cellpadding="5">
+							<tr>
+								<th>取引先カナ名</th>
+								<td>
+									<input type="text" id="kana" name="">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+						</div>
+						<div class="box pull-right">
+							<table border="0" cellspacing="5" cellpadding="5" >
+						<tbody>
+							<tr>
+								<th>取引先担当者名</th>
+								<td><input type="text" class="" id="" name=""></td>
+							</tr>
+							<tr>
+								<th>分類１</th>
+								<td>
+									<SELECT>
+										<OPTION value="2" selected>　　</OPTION>
+										<OPTION value="1">　　</OPTION>
+									</SELECT>
+								</td>
+							</tr>
+							<tr>
+								<th>分類２</th>
+								<td>
+									<SELECT>
+										<OPTION value="2" selected>　　</OPTION>
+										<OPTION value="1">　　</OPTION>
+									</SELECT>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+						</div>
+					</div>
+				</div>
+				
+						  <table class="table table-bordered hover pop_up" style="table-layout:fixed" id="example">
+							    <thead>
+							      <tr class="bg-primary">
+							        <th width="5px">No</th>
+							        <th width="110px">取り引き先コード</th>
+							        <th width="250px">フリガナ</th>
+							        <th width="200px">取引先名</th>
+							        <th width="80px">取引先区分</th>
+							        <th width="100px">担当者</th>
+							        <th width="100px">自社担当者</th>
+							        <th width="200px">自社担当者名</th>
+							        
+							        <th width="100px">郵便番号</th>
+							        <th width="300px">住所１</th>
+							        <th width="300px">住所2</th>
+							        <th width="100px">電話番号</th>
+							        <th width="100px">FAX番号</th>
+							        <th width="500px">備考１</th>
+							        <th width="500px">備考２</th>
+							        <th width="120px">更新日</th>
+							      </tr>
+							    </thead>
+							    <tbody id="data_pass">
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='0' data-custname='取引先A'>0</td>
+									<td>ﾄﾘﾋｷｻｷﾃｽﾄ</td>
+									<td>取引先A</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>取引先A</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00' data-custname='株式会社アクト'>00</td>
+									<td>ｱｸﾄ</td>
+									<td>株式会社アクト</td>
+									<td>両方</td>
+									<td>吉田</td>
+									<td>5</td>
+									<td>株式会社アクト</td>
+									
+									<td>460-0002</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td>丸の内ビル6階</td>
+									<td>052-123-4567</td>
+									<td>052-123-4568</td>
+									<td>備考１</td>
+									<td>備考２</td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='000' data-custname='１'>000</td>
+									<td>1</td>
+									<td>１</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>１</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='0000000025' data-custname='松元社'>0000000025</td>
+									<td>ﾏﾂﾓﾄｼｬ</td>
+									<td>松元社</td>
+									<td>両方</td>
+									<td></td>
+									<td>6</td>
+									<td>松元社</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00001' data-custname='清水商店'>00001</td>
+									<td>ｼﾐｽﾞｼｮｳﾃﾝ</td>
+									<td>清水商店</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>清水商店</td>
+									
+									<td>460-0002</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td></td>
+									<td>052-111-2222</td>
+									<td>052-111-3333</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='000010' data-custname='Ｘ　ＨＯＴＥＬ'>000010</td>
+									<td></td>
+									<td>Ｘ　ＨＯＴＥＬ</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>Ｘ　ＨＯＴＥＬ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00001010' data-custname='Ｘ　ＨＯＴＥＬ　チクサ'>00001010</td>
+									<td></td>
+									<td>Ｘ　ＨＯＴＥＬ　チクサ</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>Ｘ　ＨＯＴＥＬ　チクサ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00002' data-custname='岡田商店'>00002</td>
+									<td>ｵｶﾀﾞｼｮｳﾃﾝ</td>
+									<td>岡田商店</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>岡田商店</td>
+									
+									<td>460-0002</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td></td>
+									<td>052-111-2222</td>
+									<td>052-111-3333</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='000111' data-custname='現金客'>000111</td>
+									<td></td>
+									<td>現金客</td>
+									<td>両方</td>
+									<td></td>
+									<td></td>
+									<td>現金客</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='000145' data-custname='長田産業'>000145</td>
+									<td>ﾅｶﾞﾀｻﾝｷﾞｮｳ</td>
+									<td>長田産業</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>長田産業</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='0001451' data-custname='長田産業　第２工場'>0001451</td>
+									<td>ﾅｶﾞﾀｻﾝｷﾞｮｳ ﾀﾞｲ2</td>
+									<td>長田産業　第２工場</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>長田産業　第２工場</td>
+									
+									<td>465-0058</td>
+									<td>愛知県名古屋市名東区山の手１－１</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='001' data-custname='渡辺商店'>001</td>
+									<td>ﾔﾏﾀﾞｼｮｳﾃﾝ</td>
+									<td>渡辺商店</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>渡辺商店</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00101' data-custname='山田工業'>00101</td>
+									<td>ﾔﾏﾀﾞｺｳｷﾞｮｳ</td>
+									<td>山田工業</td>
+									<td>両方</td>
+									<td>三浦</td>
+									<td>22208</td>
+									<td>山田工業</td>
+									
+									<td>461-0021</td>
+									<td>愛知県名古屋市東区大曽根1-2-3</td>
+									<td>第一大曽根ビル2階</td>
+									<td>052-222-3333</td>
+									<td>052-222-4444</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00102' data-custname='佐藤産業'>00102</td>
+									<td>ｻﾄｳｻﾝｷﾞｮｳ</td>
+									<td>佐藤産業</td>
+									<td>両方</td>
+									<td>佐々木</td>
+									<td>22206</td>
+									<td>佐藤産業</td>
+									
+									<td>461-0004</td>
+									<td>愛知県名古屋市東区葵1-2-3</td>
+									<td>第二葵ビル12階</td>
+									<td>052-333-4444</td>
+									<td>052-333-5555</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00103' data-custname='ＡＢＣ工業'>00103</td>
+									<td>ABCｺｳｷﾞｮｳ</td>
+									<td>ＡＢＣ工業</td>
+									<td>両方</td>
+									<td>桜井</td>
+									<td>1</td>
+									<td>ＡＢＣ工業</td>
+									
+									<td>460-0002</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td>第三丸の内ビル5階</td>
+									<td>052-444-5555</td>
+									<td>052-444-6666</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00104' data-custname='黒田精機'>00104</td>
+									<td>ｸﾛﾀﾞｾｲｷ</td>
+									<td>黒田精機</td>
+									<td>両方</td>
+									<td>市川</td>
+									<td>1</td>
+									<td>黒田精機</td>
+									
+									<td>460-0008</td>
+									<td>愛知県名古屋市中区栄1-2-3</td>
+									<td></td>
+									<td>052-555-6666</td>
+									<td>052-555-7777</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00105' data-custname='上田産業'>00105</td>
+									<td>ｳｴﾀﾞｻﾝｷﾞｮｳ</td>
+									<td>上田産業</td>
+									<td>両方</td>
+									<td>加藤</td>
+									<td>1</td>
+									<td>上田産業</td>
+									
+									<td>464-0850</td>
+									<td>愛知県名古屋市千種区今池1-2-3</td>
+									<td></td>
+									<td>052-666-7777</td>
+									<td>052-666-8888</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00106' data-custname='オオガテック'>00106</td>
+									<td>ｵｵｶﾞﾃｯｸ</td>
+									<td>オオガテック</td>
+									<td>両方</td>
+									<td>水谷</td>
+									<td>1</td>
+									<td>オオガテック</td>
+									
+									<td>464-0016</td>
+									<td>愛知県名古屋市千種区希望ケ丘1-2-3</td>
+									<td></td>
+									<td>052-777-8888</td>
+									<td>052-777-9999</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00107' data-custname='田中産業'>00107</td>
+									<td>ﾀﾅｶｻﾝｷﾞｮｳ</td>
+									<td>田中産業</td>
+									<td>両方</td>
+									<td>生田</td>
+									<td>1</td>
+									<td>田中産業</td>
+									
+									<td>460-0008</td>
+									<td>愛知県名古屋市中区栄1-2-3</td>
+									<td>栄第一ビル10階</td>
+									<td>052-888-9999</td>
+									<td>052-888-0000</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00108' data-custname='サトウテック'>00108</td>
+									<td>サトウテック</td>
+									<td>サトウテック</td>
+									<td>両方</td>
+									<td>長井</td>
+									<td>1</td>
+									<td>サトウテック</td>
+									
+									<td>460-0013</td>
+									<td>愛知県名古屋市中区上前津1-2-3</td>
+									<td></td>
+									<td>052-999-0000</td>
+									<td>052-999-0009</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00109' data-custname='ヌナ'>00109</td>
+									<td>ﾇﾅ</td>
+									<td>ヌナ</td>
+									<td>仕入先</td>
+									<td>伊藤</td>
+									<td>0008</td>
+									<td>ヌナ</td>
+									
+									<td>465-0093</td>
+									<td></td>
+									<td></td>
+									<td>052-111-9999</td>
+									<td>052-111-8888</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00111' data-custname='松元産業'>00111</td>
+									<td>ﾏﾂﾓﾄｻﾝｷﾞｮｳ</td>
+									<td>松元産業</td>
+									<td>両方</td>
+									<td>神田</td>
+									<td>1</td>
+									<td>松元産業</td>
+									
+									<td>112-1212</td>
+									<td>愛知県名古屋市</td>
+									<td>東区東桜</td>
+									<td>090-6464-0736</td>
+									<td>052-212-2321</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00112' data-custname='黒田'>00112</td>
+									<td>ｸﾛﾀﾞ</td>
+									<td>黒田</td>
+									<td>両方</td>
+									<td>黒田</td>
+									<td>1</td>
+									<td>黒田</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00113' data-custname='鈴木産業'>00113</td>
+									<td>ｽｽﾞｷｻﾝｷﾞｮｳ</td>
+									<td>鈴木産業</td>
+									<td>両方</td>
+									<td>徳川</td>
+									<td>178</td>
+									<td>鈴木産業</td>
+									
+									<td>465-0097</td>
+									<td>愛知県名古屋市名東区平和が丘1-2-3</td>
+									<td></td>
+									<td>052-222-7777</td>
+									<td>052-222-6666</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00125' data-custname='松元社'>00125</td>
+									<td>ﾏﾂﾓﾄｼｬ</td>
+									<td>松元社</td>
+									<td>両方</td>
+									<td></td>
+									<td>6</td>
+									<td>松元社</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>納品書2段、請求書</td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00126' data-custname='森田社'>00126</td>
+									<td>ﾓﾘﾀｼｬ</td>
+									<td>森田社</td>
+									<td>両方</td>
+									<td></td>
+									<td>6</td>
+									<td>森田社</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>納品書2段、請求書</td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='00143' data-custname='大田産業'>00143</td>
+									<td>ｵｵﾀｻﾝｷﾞｮｳ</td>
+									<td>大田産業</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>大田産業</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='002600' data-custname='協和コンクリート'>002600</td>
+									<td>ｷｮｳﾜｺﾝｸﾘｰﾄ</td>
+									<td>協和コンクリート</td>
+									<td>仕入先</td>
+									<td></td>
+									<td></td>
+									<td>協和コンクリート</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='005800' data-custname='日本テクロ'>005800</td>
+									<td>ﾆﾎﾝﾃｸﾛ</td>
+									<td>日本テクロ</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>日本テクロ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='01' data-custname='高島屋　名古屋点'>01</td>
+									<td>ﾀｶｼﾏﾔ</td>
+									<td>高島屋　名古屋点</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>高島屋　名古屋点</td>
+									
+									<td>458-0003</td>
+									<td>名古屋市中村区名駅1-11-11</td>
+									<td>ＪＲセントラルタワーズ</td>
+									<td>052-777-1111</td>
+									<td>052^777^1112</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='012' data-custname='あああああ'>012</td>
+									<td>ｱｱｱｱｱｱ</td>
+									<td>あああああ</td>
+									<td>両方</td>
+									<td></td>
+									<td>01</td>
+									<td>あああああ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='020660' data-custname='SUN.Nｺｰﾎﾟﾚｰｼｮﾝ*10'>020660</td>
+									<td>SAN</td>
+									<td>SUN.Nｺｰﾎﾟﾚｰｼｮﾝ*10</td>
+									<td>得意先</td>
+									<td></td>
+									<td>0008</td>
+									<td>SUN.Nｺｰﾎﾟﾚｰｼｮﾝ*10</td>
+									
+									<td>277-0861</td>
+									<td>千葉県柏市高田1077</td>
+									<td></td>
+									<td>04-7199-2646</td>
+									<td>04-7199-2128</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1' data-custname='吉田産業'>1</td>
+									<td>ﾖｼﾀﾞｻﾝｷﾞｮｳ</td>
+									<td>吉田産業</td>
+									<td>両方</td>
+									<td>吉田</td>
+									<td>3</td>
+									<td>吉田産業</td>
+									
+									<td>123-4567</td>
+									<td>住所１ああいいいいいうううううえええええおおおお0*</td>
+									<td>住所２ああいいいいいうううううえええええおおおお0*</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='100' data-custname='遠藤電気'>100</td>
+									<td>遠藤電気</td>
+									<td>遠藤電気</td>
+									<td>両方</td>
+									<td></td>
+									<td>15</td>
+									<td>遠藤電気</td>
+									
+									<td></td>
+									<td>愛知県名古屋市中村区</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1000' data-custname='山崎工務店'>1000</td>
+									<td>ﾔﾏｻﾞｷｺｳﾑﾃﾝ</td>
+									<td>山崎工務店</td>
+									<td>両方</td>
+									<td></td>
+									<td>8</td>
+									<td>山崎工務店</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1001' data-custname='株式会社山本'>1001</td>
+									<td>ｶﾌﾞｼｷｶﾞｲｼｬﾔﾏﾓﾄ</td>
+									<td>株式会社山本</td>
+									<td>両方</td>
+									<td></td>
+									<td>15</td>
+									<td>株式会社山本</td>
+									
+									<td></td>
+									<td>岐阜県岐阜市六条</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='101' data-custname='ＡＢＣ工業'>101</td>
+									<td>ABC</td>
+									<td>ＡＢＣ工業</td>
+									<td>両方</td>
+									<td>田中</td>
+									<td>1</td>
+									<td>ＡＢＣ工業</td>
+									
+									<td>460-0009</td>
+									<td>愛知県名古屋市中区丸の内</td>
+									<td>1-2-3</td>
+									<td>052-111-2222</td>
+									<td>052-333-4444</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='102' data-custname='黒田精機'>102</td>
+									<td>ｸﾛﾀﾞｾｲｷ</td>
+									<td>黒田精機</td>
+									<td>両方</td>
+									<td>田中</td>
+									<td>1</td>
+									<td>黒田精機</td>
+									
+									<td>460-0001</td>
+									<td>愛知県名古屋市中区栄</td>
+									<td>2-3-4</td>
+									<td>052-555-6666</td>
+									<td>052-666-7777</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='103' data-custname='上田産業'>103</td>
+									<td>ｳｴﾀﾞｻﾝｷﾞｮｳ</td>
+									<td>上田産業</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>上田産業</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='104' data-custname='オオガテック'>104</td>
+									<td>ｵｵｶﾞﾃｯｸ</td>
+									<td>オオガテック</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>オオガテック</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='11' data-custname='請求-20締-切捨'>11</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-20締-切捨</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-20締-切捨</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='111' data-custname='黒田精機'>111</td>
+									<td>ｸﾛﾀﾞｾｲｷ</td>
+									<td>黒田精機</td>
+									<td>得意先</td>
+									<td>田中</td>
+									<td>1</td>
+									<td>黒田精機</td>
+									
+									<td>460-0001</td>
+									<td>愛知県名古屋市中区栄</td>
+									<td>2-3-4</td>
+									<td>052-555-6666</td>
+									<td>052-666-7777</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1111' data-custname='丹羽コーポレーション'>1111</td>
+									<td>ﾆﾜｺｰﾎﾟﾚｰｼｮﾝ</td>
+									<td>丹羽コーポレーション</td>
+									<td>得意先</td>
+									<td></td>
+									<td>8</td>
+									<td>丹羽コーポレーション</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1111111111' data-custname='111111111111111111111111111111'>1111111111</td>
+									<td>111111111111111111111111111111</td>
+									<td>111111111111111111111111111111</td>
+									<td>両方</td>
+									<td>あああああああああああああああああああああああああ</td>
+									<td>1</td>
+									<td>111111111111111111111111111111</td>
+									
+									<td>111-1111</td>
+									<td>11111111111111111111111111111111111111111111111111</td>
+									<td>１１１１１１１１１１１１１１１１１１１１１１１１１</td>
+									<td>aaaaaaaaaaaaaaa</td>
+									<td>aaaaaaaaaaaaaaaa</td>
+									<td>111111111111111111111111111111111111111111111111111</td>
+									<td>11111111111111111111111111111111111111111111111111</td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='12' data-custname='請求-20締-四捨五入'>12</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-20締-四捨五入</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-20締-四捨五入</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='123' data-custname='あ'>123</td>
+									<td>ｱ</td>
+									<td>あ</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>1</td>
+									<td>あ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1234' data-custname='１'>1234</td>
+									<td>1</td>
+									<td>１</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>1</td>
+									<td>１</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='12345' data-custname='あああああ'>12345</td>
+									<td>ｱｱ</td>
+									<td>あああああ</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>あああああ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='1234567890' data-custname='最大文字数１２３４５６７８９０'>1234567890</td>
+									<td>ｻｲﾀﾞｲﾓｼﾞｽｳ12345678901234567890</td>
+									<td>最大文字数１２３４５６７８９０</td>
+									<td>両方</td>
+									<td>最大文字数１２３４５６７８９０１２３４５６７８９０</td>
+									<td>6</td>
+									<td>最大文字数１２３４５６７８９０</td>
+									
+									<td>999-9999</td>
+									<td>最大文字数１２３４５６７８９０１２３４５６７８９０</td>
+									<td>最大文字数１２３４５６７８９０１２３４５６７８９０</td>
+									<td>12345678901234567890</td>
+									<td>12345678901234567890</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='13' data-custname='請求-20締-切上'>13</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-20締-切上</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-20締-切上</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='177' data-custname='取引先ああいいいいいうううう1*'>177</td>
+									<td>ﾄﾘﾋｷｻｷ</td>
+									<td>取引先ああいいいいいうううう1*</td>
+									<td>得意先</td>
+									<td>山田</td>
+									<td>5</td>
+									<td>取引先ああいいいいいうううう1*</td>
+									
+									<td>123-4567</td>
+									<td>愛知県名古屋市中区栄1-1-1</td>
+									<td>第一栄ビル1階</td>
+									<td>052-111-2222</td>
+									<td>052-111-9999</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='178001' data-custname='稲垣商店'>178001</td>
+									<td>ｲﾅｶﾞｷｼｮｳﾃﾝ</td>
+									<td>稲垣商店</td>
+									<td>両方</td>
+									<td></td>
+									<td>178</td>
+									<td>稲垣商店</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='2' data-custname='得意先２ＡＢＣＤＥＦＧＨＩＪ■'>2</td>
+									<td>ﾄｸｲｻｷ2ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>得意先２ＡＢＣＤＥＦＧＨＩＪ■</td>
+									<td>得意先</td>
+									<td></td>
+									<td>3</td>
+									<td>得意先２ＡＢＣＤＥＦＧＨＩＪ■</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='20' data-custname='株式会社秀商'>20</td>
+									<td>ｶﾌﾞｼｷｶﾞｲｼｬﾋﾃﾞｼｮｰ</td>
+									<td>株式会社秀商</td>
+									<td>得意先</td>
+									<td></td>
+									<td>15</td>
+									<td>株式会社秀商</td>
+									
+									<td>   -</td>
+									<td>名古屋市中村区</td>
+									<td></td>
+									<td>0000000000</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='20000000' data-custname='仕入先test'>20000000</td>
+									<td>ｼｲﾚｻｷﾃｽﾄ</td>
+									<td>仕入先test</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>9</td>
+									<td>仕入先test</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='21' data-custname='伝票-20締-切捨'>21</td>
+									<td>ｷﾝｶﾞｸ-ﾃﾞﾝ</td>
+									<td>伝票-20締-切捨</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>伝票-20締-切捨</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='22' data-custname='伝票-20締-四捨五入'>22</td>
+									<td>ｷﾝｶﾞｸ-ﾃﾞﾝ</td>
+									<td>伝票-20締-四捨五入</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>伝票-20締-四捨五入</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='222' data-custname='テスト'>222</td>
+									<td>ﾃｽﾄ</td>
+									<td>テスト</td>
+									<td>両方</td>
+									<td></td>
+									<td>5555555555</td>
+									<td>テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='23' data-custname='伝票-20締-切上'>23</td>
+									<td>ｷﾝｶﾞｸ-ﾃﾞﾝ</td>
+									<td>伝票-20締-切上</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>伝票-20締-切上</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='25' data-custname='明治製菓'>25</td>
+									<td>ﾒｲｼﾞｾｲｶ</td>
+									<td>明治製菓</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>15</td>
+									<td>明治製菓</td>
+									
+									<td>   -</td>
+									<td>愛知県名古屋市丸の内</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='3' data-custname='吉田工業'>3</td>
+									<td>ｼｲﾚｻｷ1ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>吉田工業</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>3</td>
+									<td>吉田工業</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='31' data-custname='明細-20締-切捨'>31</td>
+									<td>ｷﾝｶﾞｸ-ﾒｲ</td>
+									<td>明細-20締-切捨</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>明細-20締-切捨</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='32' data-custname='明細-20締-四捨五入'>32</td>
+									<td>ｷﾝｶﾞｸ-ﾒｲ</td>
+									<td>明細-20締-四捨五入</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>明細-20締-四捨五入</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='33' data-custname='明細-20締-切上'>33</td>
+									<td>ｷﾝｶﾞｸ-ﾒｲ</td>
+									<td>明細-20締-切上</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>明細-20締-切上</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='3334' data-custname='取引先テスト'>3334</td>
+									<td>ﾄﾘﾋｷｻｷﾃｽﾄ</td>
+									<td>取引先テスト</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>取引先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='34' data-custname='あ'>34</td>
+									<td>ｱ</td>
+									<td>あ</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>3</td>
+									<td>あ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='35' data-custname='森永製菓'>35</td>
+									<td>ﾓﾘﾅｶﾞｾｲｶ</td>
+									<td>森永製菓</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>15</td>
+									<td>森永製菓</td>
+									
+									<td>   -</td>
+									<td>愛知県名古屋市天白区</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='36' data-custname='渡辺工業'>36</td>
+									<td>ﾜﾀﾅﾍﾞｺｳｷﾞｮｳ</td>
+									<td>渡辺工業</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>渡辺工業</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='4' data-custname='仕入先２ＡＢＣＤＥＦＧＨＩＪ■'>4</td>
+									<td>ｼｲﾚｻｷ2ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>仕入先２ＡＢＣＤＥＦＧＨＩＪ■</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>3</td>
+									<td>仕入先２ＡＢＣＤＥＦＧＨＩＪ■</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='40' data-custname='平成観光'>40</td>
+									<td>ﾍｲｾｲｶﾝｺｳ</td>
+									<td>平成観光</td>
+									<td>得意先</td>
+									<td></td>
+									<td>15</td>
+									<td>平成観光</td>
+									
+									<td>   -</td>
+									<td>愛知県名古屋市中区</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='41' data-custname='請求-末締-切捨'>41</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-末締-切捨</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-末締-切捨</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td>052-123-1234</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='42' data-custname='請求-末締-四捨五入'>42</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-末締-四捨五入</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-末締-四捨五入</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='43' data-custname='請求-末締-切上'>43</td>
+									<td>ｷﾝｶﾞｸ-ｾｲ</td>
+									<td>請求-末締-切上</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>請求-末締-切上</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='4321' data-custname='得意先'>4321</td>
+									<td>ﾄｸｲｻｷ1ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>得意先</td>
+									<td>両方</td>
+									<td>吉田</td>
+									<td>3</td>
+									<td>得意先</td>
+									
+									<td>123-4567</td>
+									<td>住所</td>
+									<td>住所２</td>
+									<td>000000</td>
+									<td>030404</td>
+									<td>備考１</td>
+									<td>備考２</td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='44' data-custname='ブルボン'>44</td>
+									<td>ﾌﾞﾙﾎﾞﾝ</td>
+									<td>ブルボン</td>
+									<td>仕入先</td>
+									<td>山田</td>
+									<td>15</td>
+									<td>ブルボン</td>
+									
+									<td>123-4567</td>
+									<td>愛知県西春日井市</td>
+									<td>2-2-2</td>
+									<td>052-111-1111</td>
+									<td>052-999-9999</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='5' data-custname='両方１ＡＢＣＤＥＦＧＨＩＪＫ■'>5</td>
+									<td>ﾘｮｳﾎｳ1ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>両方１ＡＢＣＤＥＦＧＨＩＪＫ■</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>両方１ＡＢＣＤＥＦＧＨＩＪＫ■</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='5050' data-custname='５０５０'>5050</td>
+									<td></td>
+									<td>５０５０</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>５０５０</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='5555555555' data-custname='取引先名５６７８９０１２３４５'>5555555555</td>
+									<td>ﾌﾘｶﾞﾅ6789012345678901234567890</td>
+									<td>取引先名５６７８９０１２３４５</td>
+									<td>両方</td>
+									<td></td>
+									<td>555555</td>
+									<td>取引先名５６７８９０１２３４５</td>
+									
+									<td>555-5555</td>
+									<td>住所１＿＿６７８９０１２３４５６７８９０１２３４５</td>
+									<td>住所２＿＿６７８９０１２３４５６７８９０１２３４５</td>
+									<td>TEL45678901234567890</td>
+									<td>FAX45678901234567890</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='6' data-custname='両方２ＡＢＣＤＥＦＧＨＩＪＫ■'>6</td>
+									<td>ﾘｮｳﾎｳ2ABCDEFGHIJKLMNOPQRSTUVW_</td>
+									<td>両方２ＡＢＣＤＥＦＧＨＩＪＫ■</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>両方２ＡＢＣＤＥＦＧＨＩＪＫ■</td>
+									
+									<td>100-2000</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='60618' data-custname='MATUMOTO'>60618</td>
+									<td>ﾏﾂﾓﾄ</td>
+									<td>MATUMOTO</td>
+									<td>両方</td>
+									<td></td>
+									<td>6</td>
+									<td>MATUMOTO</td>
+									
+									<td>123-3211</td>
+									<td>あいうえお</td>
+									<td>かきくけこ</td>
+									<td>123-123-1234（代）</td>
+									<td>321-333-3455</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='66601' data-custname='田中産業'>66601</td>
+									<td>ﾀﾅｶｻﾝｷﾞｮｳ</td>
+									<td>田中産業</td>
+									<td>両方</td>
+									<td>三浦</td>
+									<td>1</td>
+									<td>田中産業</td>
+									
+									<td>123-4567</td>
+									<td>愛知県名古屋市中区栄1-2-3</td>
+									<td>栄第一ビル10階</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='66602' data-custname='鈴木電気'>66602</td>
+									<td>ｽｽﾞｷﾃﾞﾝｷ</td>
+									<td>鈴木電気</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>鈴木電気</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='66603' data-custname='佐藤工務店'>66603</td>
+									<td>ｻﾄｳｺｳﾑﾃﾝ</td>
+									<td>佐藤工務店</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>佐藤工務店</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='66604' data-custname='オーガテクニクス'>66604</td>
+									<td>ｵｰｶﾞﾃｸﾆｸｽ</td>
+									<td>オーガテクニクス</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>オーガテクニクス</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='66605' data-custname='佐藤工務店　名古屋店'>66605</td>
+									<td>ｻﾄｳｺｳﾑﾃﾝ ﾅｺﾞﾔﾃﾝ</td>
+									<td>佐藤工務店　名古屋店</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>佐藤工務店　名古屋店</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='7' data-custname='ｇｈｇ'>7</td>
+									<td>ABCDEFGHIJKLMNOPQRSTUVWXYZabcd</td>
+									<td>ｇｈｇ</td>
+									<td>両方</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ■</td>
+									<td>3</td>
+									<td>ｇｈｇ</td>
+									
+									<td>455-0002</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ■</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ■</td>
+									<td>052-123-4567</td>
+									<td>052-123-4568</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ■ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ□</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ□</td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='77' data-custname='ああああああああ'>77</td>
+									<td>ｱｱｱｱｱｱｱｱｱｱｱｱｱｱｱｱｱ</td>
+									<td>ああああああああ</td>
+									<td>両方</td>
+									<td></td>
+									<td>9</td>
+									<td>ああああああああ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='77701' data-custname='田中工業'>77701</td>
+									<td>ﾀﾅｶｺｳｷﾞｮｳ</td>
+									<td>田中工業</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>田中工業</td>
+									
+									<td>123-4567</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td>丸の内第二ビル 123</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='77702' data-custname='鈴木産業'>77702</td>
+									<td>ｽｽﾞｷｻﾝｷﾞｮｳ</td>
+									<td>鈴木産業</td>
+									<td>得意先</td>
+									<td>田中</td>
+									<td>1</td>
+									<td>鈴木産業</td>
+									
+									<td>460-0001</td>
+									<td>愛知県名古屋市中区丸の内1-2-3</td>
+									<td>丸の内第一ビル 1203</td>
+									<td>052-000-1111</td>
+									<td>052-000-2222</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='77703' data-custname='サトウテック'>77703</td>
+									<td>サトウテック</td>
+									<td>サトウテック</td>
+									<td>得意先</td>
+									<td>渡辺</td>
+									<td>1</td>
+									<td>サトウテック</td>
+									
+									<td>460-0008</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='8' data-custname='取引先８修正'>8</td>
+									<td>ﾄﾘﾋｷｻｷ8</td>
+									<td>取引先８修正</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>取引先８修正</td>
+									
+									<td>123-4567</td>
+									<td>ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸ■</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='8000000001' data-custname='東金属工業（株）'>8000000001</td>
+									<td>ｱｽﾞﾏｷﾝｿﾞｸｺｳｷﾞｮｳ</td>
+									<td>東金属工業（株）</td>
+									<td>両方</td>
+									<td></td>
+									<td>01</td>
+									<td>東金属工業（株）</td>
+									
+									<td>460-0002</td>
+									<td>愛知県名古屋市中区丸の内２丁目１３番１８号</td>
+									<td>mic.丸の内ビル　６階</td>
+									<td>052-205-6070</td>
+									<td>052-205-6071</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='887' data-custname='テスト'>887</td>
+									<td>ﾃｽﾄ</td>
+									<td>テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='889' data-custname='ああ'>889</td>
+									<td>ｱ</td>
+									<td>ああ</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>ああ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='899' data-custname='ｄｄ'>899</td>
+									<td>dd</td>
+									<td>ｄｄ</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>ｄｄ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000000' data-custname='山田商店'>9000000000</td>
+									<td>ﾔﾏﾀﾞｼｮｳﾃﾝ</td>
+									<td>山田商店</td>
+									<td>両方</td>
+									<td>山田太郎</td>
+									<td>999</td>
+									<td>山田商店</td>
+									
+									<td>450-0001</td>
+									<td>愛知県名古屋市中村区那古野</td>
+									<td>那古野ビル９Ｆ</td>
+									<td>052-123-4567</td>
+									<td>052-321-4567</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000001' data-custname='佐藤商店'>9000000001</td>
+									<td>ｻﾄｳｼｮｳﾃﾝ</td>
+									<td>佐藤商店</td>
+									<td>両方</td>
+									<td>佐藤隆</td>
+									<td>999</td>
+									<td>佐藤商店</td>
+									
+									<td>460-0001</td>
+									<td>愛知県名古屋市中区三の丸1-2-3</td>
+									<td>三の丸ビル９Ｆ</td>
+									<td>052-123-4567</td>
+									<td>052-321-4567</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000002' data-custname='鈴木商店'>9000000002</td>
+									<td>ｽｽﾞｷｼｮｳﾃﾝ</td>
+									<td>鈴木商店</td>
+									<td>両方</td>
+									<td>鈴木</td>
+									<td>999</td>
+									<td>鈴木商店</td>
+									
+									<td>452-0001</td>
+									<td>愛知県清須市西枇杷島町古城１－２－３</td>
+									<td></td>
+									<td>052-123-4567</td>
+									<td>052-321-4567</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000003' data-custname='本田商店'>9000000003</td>
+									<td>ﾎﾝﾀﾞｼｮｳﾃﾝ</td>
+									<td>本田商店</td>
+									<td>両方</td>
+									<td>加藤</td>
+									<td>999</td>
+									<td>本田商店</td>
+									
+									<td>450-0003</td>
+									<td>愛知県名古屋市中村区名駅南３－２－１</td>
+									<td>本田ビル2Ｆ</td>
+									<td>052-123-4567</td>
+									<td>052-321-4567</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000050' data-custname='眞鍋商事'>9000000050</td>
+									<td>ﾏﾅﾍﾞｼｮｳｼﾞ</td>
+									<td>眞鍋商事</td>
+									<td>両方</td>
+									<td></td>
+									<td>0008</td>
+									<td>眞鍋商事</td>
+									
+									<td>123-4567</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000051' data-custname='ああ'>9000000051</td>
+									<td>ｱｱｱ</td>
+									<td>ああ</td>
+									<td>両方</td>
+									<td></td>
+									<td>0008</td>
+									<td>ああ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000055' data-custname='nnnn'>9000000055</td>
+									<td>ﾝﾝﾝ</td>
+									<td>nnnn</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>nnnn</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000056' data-custname='ｔｔｔｔ'>9000000056</td>
+									<td>ｲｲｲ</td>
+									<td>ｔｔｔｔ</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>ｔｔｔｔ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9000000058' data-custname='ｙｙｙｙｙｙ'>9000000058</td>
+									<td>yyyyy</td>
+									<td>ｙｙｙｙｙｙ</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>ｙｙｙｙｙｙ</td>
+									
+									<td></td>
+									<td>ADR</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='97' data-custname='あ'>97</td>
+									<td>ｱ</td>
+									<td>あ</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>あ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='98' data-custname='い'>98</td>
+									<td>ｲ</td>
+									<td>い</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>い</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='99' data-custname='あ'>99</td>
+									<td>ｱ</td>
+									<td>あ</td>
+									<td>両方</td>
+									<td></td>
+									<td>3</td>
+									<td>あ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='999' data-custname='仕入先ﾀﾞﾖ'>999</td>
+									<td>ｼｲﾚｻｷﾀﾞﾖ</td>
+									<td>仕入先ﾀﾞﾖ</td>
+									<td>仕入先</td>
+									<td></td>
+									<td>8</td>
+									<td>仕入先ﾀﾞﾖ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9998' data-custname='山田工業'>9998</td>
+									<td>ﾔﾏﾀﾞｺｳｷﾞｮｳ</td>
+									<td>山田工業</td>
+									<td>両方</td>
+									<td>三浦</td>
+									<td>22208</td>
+									<td>山田工業</td>
+									
+									<td></td>
+									<td>愛知県名古屋市東区大曽根1-2-3</td>
+									<td>第一大曽根ビル2階</td>
+									<td>052-222-3333</td>
+									<td>052-222-4444</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9999' data-custname='共通'>9999</td>
+									<td>ｷｮｳﾂｳ</td>
+									<td>共通</td>
+									<td>両方</td>
+									<td></td>
+									<td></td>
+									<td>共通</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='99999' data-custname='両方'>99999</td>
+									<td>ﾘｮｳﾎｳ</td>
+									<td>両方</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>両方</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='999999' data-custname='山田工業'>999999</td>
+									<td>ﾔﾏﾀﾞｺｳｷﾞｮｳ</td>
+									<td>山田工業</td>
+									<td>得意先</td>
+									<td>三浦</td>
+									<td>22208</td>
+									<td>山田工業</td>
+									
+									<td></td>
+									<td>愛知県名古屋市東区大曽根1-2-3</td>
+									<td>第一大曽根ビル2階</td>
+									<td>052-222-3333</td>
+									<td>052-222-4444</td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='9999999' data-custname='トラックス'>9999999</td>
+									<td></td>
+									<td>トラックス</td>
+									<td>両方</td>
+									<td></td>
+									<td></td>
+									<td>トラックス</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='A' data-custname='得意先テスト'>A</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='aaaaa' data-custname='あ'>aaaaa</td>
+									<td>ｱ</td>
+									<td>あ</td>
+									<td>両方</td>
+									<td></td>
+									<td>1</td>
+									<td>あ</td>
+									
+									<td>   -</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='ABC' data-custname='ＡＢＣ'>ABC</td>
+									<td></td>
+									<td>ＡＢＣ</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>ＡＢＣ</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='B' data-custname='得意先テスト'>B</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='C' data-custname='得意先テスト'>C</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='D' data-custname='得意先テスト'>D</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='E' data-custname='得意先テスト'>E</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='F' data-custname='得意先テスト'>F</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='G' data-custname='得意先テスト'>G</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='H' data-custname='得意先テスト'>H</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='I' data-custname='得意先テスト'>I</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='J' data-custname='得意先テスト'>J</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='K' data-custname='得意先テスト'>K</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='K01' data-custname='開伸（自社）'>K01</td>
+									<td></td>
+									<td>開伸（自社）</td>
+									<td>両方</td>
+									<td></td>
+									<td></td>
+									<td>開伸（自社）</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='L' data-custname='得意先テスト'>L</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='M' data-custname='得意先テスト'>M</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='N' data-custname='得意先テスト'>N</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='SEK100' data-custname='請求先テストTEST'>SEK100</td>
+									<td>ｾｲｷｭｳｻｷﾃｽﾄ</td>
+									<td>請求先テストTEST</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>請求先テストTEST</td>
+									
+									<td>123-4567</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='TOK100' data-custname='得意先テスト'>TOK100</td>
+									<td>ﾄｸｲｻｷﾃｽﾄ</td>
+									<td>得意先テスト</td>
+									<td>得意先</td>
+									<td></td>
+									<td>1</td>
+									<td>得意先テスト</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='TRF' data-custname='ＴＲＦ'>TRF</td>
+									<td></td>
+									<td>ＴＲＦ</td>
+									<td>両方</td>
+									<td></td>
+									<td></td>
+									<td>ＴＲＦ</td>
+									
+									<td></td>
+									<td>ＡＯＩＵＤ</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='TS010' data-custname='日清製粉'>TS010</td>
+									<td></td>
+									<td>日清製粉</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>日清製粉</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    							      <tr>
+							        <td class="right"></td>
+									<td class="data" data-custcd='TS020' data-custname='日本製粉'>TS020</td>
+									<td></td>
+									<td>日本製粉</td>
+									<td>得意先</td>
+									<td></td>
+									<td></td>
+									<td>日本製粉</td>
+									
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">0000-00-00 00:00:00</td>
+							      </tr>
+							    							    </tbody>
+							  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ </div>
+      <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <div id="siteBottomInner" class="innerBox">
+          </div>
+        </div>
+        <div id="siteBottom">
+        <div id="siteBottomInner" class="innerBox">
+        </div>
+        </div>
+      </div>
+      </footer>
+<div class="container">
+<table class="cake-sql-log" id="cakeSqlLog_1446684430563aa70ede3f60_45393941" summary="Cake SQL Log" cellspacing="0"><caption>(default) 5 queries took 32 ms</caption>	<thead>
+		<tr><th>Nr</th><th>Query</th><th>Error</th><th>Affected</th><th>Num. rows</th><th>Took (ms)</th></tr>
+	</thead>
+	<tbody>
+	<tr><td>1</td><td>SELECT `Cust`.`CUSTCD`, `Cust`.`CUSTKB`, `Cust`.`CUSTSNM`, `Cust`.`CUSTLNM`, `Cust`.`CUSTJNM`, `Cust`.`RESPECT`, `Cust`.`ZIPCD`, `Cust`.`ADD1`, `Cust`.`ADD2`, `Cust`.`TELNO`, `Cust`.`FAXNO`, `Cust`.`SECTNM`, `Cust`.`CUSTPRSN`, `Cust`.`URL`, `Cust`.`EMAIL`, `Cust`.`CONTACT`, `Cust`.`PERSONCD`, `Cust`.`CLASS1`, `Cust`.`CLASS2`, `Cust`.`CLASS3`, `Cust`.`TORDTS`, `Cust`.`TORDTE`, `Cust`.`BIKO1`, `Cust`.`BIKO2`, `Cust`.`ROOT`, `Cust`.`SERCHKB`, `Cust`.`INSUSER`, `Cust`.`INSPROG`, `Cust`.`INSDT`, `Cust`.`UPDUSER`, `Cust`.`UPDPRG`, `Cust`.`UPDDT`, `Cust`.`DELFLG`, `Cust`.`INVSECT` FROM `cakephp`.`m_cust` AS `Cust`   WHERE 1 = 1</td><td></td><td style="text-align: right">135</td><td style="text-align: right">135</td><td style="text-align: right">16</td></tr>
+<tr><td>2</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CODR&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">16</td></tr>
+<tr><td>3</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;TAXKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>4</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;ENDKB&#039;</td><td></td><td style="text-align: right">2</td><td style="text-align: right">2</td><td style="text-align: right">0</td></tr>
+<tr><td>5</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CUSTKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+	</tbody></table>
+	
+	<script type="text/javascript" src="/app/webroot/js/common.js"></script>
+</div>
+</body>
+</html>

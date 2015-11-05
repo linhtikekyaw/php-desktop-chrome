@@ -1,0 +1,27 @@
+<?php
+# /app/Controller/RecipesController.php
+
+class ItemController extends AppController {
+//public $scaffold;
+    public function index($id) {
+        //action logic goes here..
+      
+      
+     $data = $this->Item->findByItemcd($id); 
+	 //print_r($data['Item']['ITEMCD']);
+	 	header('Content-type: application/json');
+		echo json_encode($data['Item']);
+		exit;
+	$this->autoRender = false;
+      //print_r($accno);
+      
+    }
+
+    public function share($customerId, $recipeId) {
+        //action logic goes here..
+    }
+
+    public function search($query) {
+        //action logic goes here..
+    }
+}

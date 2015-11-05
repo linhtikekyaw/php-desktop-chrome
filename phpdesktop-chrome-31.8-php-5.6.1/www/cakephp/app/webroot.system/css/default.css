@@ -1,0 +1,157 @@
+footer {
+  background-color: rgb(59, 169, 232);
+}
+#siteBottomInner {
+  text-align: center;
+}
+.innerBox, #gMenu #gMenuInner.innerBox {
+  width: 100%;
+}
+#copy {
+  color: #ffffff;
+}
+div#copy a {
+  color: white;
+}
+.i_pachi img {
+  width: 40%;
+}
+.i_pachi {
+  width: 19%;
+  float: right;
+  color: #fff;
+}
+div#siteBottom {
+  clear: both;
+  padding: 15px 0px 40px;
+  font-size: 88%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+}
+div#example_filter {
+  display: none;
+}
+#example tbody tr:nth-child(odd) {
+   background-color: #CBE2EF;
+}
+#add_new tbody tr:nth-child( +4n -3) {
+   background-color: #CBE2EF;
+}
+#add_new tbody tr:nth-child( +4n -2) {
+   background-color: #CBE2EF;
+}
+.main th {
+  background-color: rgb(47, 164, 231);
+  color: #fff;
+}
+
+input {
+    width: 80%;
+}
+.dataTables_filter {
+    display: none;
+}
+table#add_new td,table#add_new th{
+    padding: 3px;
+}
+.box {
+    width: 50%;
+}
+#dialog-confirm{
+	display:none;
+}
+#add_new tbody td div {
+    height: 20px;
+    //text-align: -webkit-right;
+    padding: 0px;
+}
+table#add_new td{
+    padding: 0px 4px;
+    text-align: -webkit-right;
+}
+.search_box {
+    height: 270px;
+}
+.half_input input[type="text"] {
+    width: 50%;
+}
+table.accepth.borderless td {
+    border-bottom: whitesmoke;
+}
+table.accepth td,.box table td{
+    border-bottom: none;
+    background-color: whitesmoke;
+}
+table.accepth th,.box table th{
+    border-bottom: none;
+    background-color: whitesmoke;
+    width: 120px;
+    font-size:13px;
+}
+table.accepth.total_amount th {
+    background-color: #2FA4E7;
+    color:#fff;
+    text-align:center;
+}
+#add_new td div.ITEMNM1 {
+    text-align: left;
+}
+
+table {
+    table-layout:fixed;
+}
+
+div#add_new_table_wrap {
+    width: 1104px;
+}
+table#add_new_head thead td {
+    background-color: #2FA4E7;
+    color: #fff;
+}
+table#add_new tbody td {
+text-align: right;
+}
+.right {
+    text-align: right;
+}
+.search_box {
+    height: 212px;
+    margin-bottom: -22px;
+}
+div#example_wrapper {
+    margin-top: -16px;
+}
+.btn {
+    padding: 1px 12px;
+}
+td.short {
+    width: 35px;
+}
+.ITEMCD,.BIKO1,.LINCLS,.UNIT {
+    text-align: left;
+}
+input#total {
+    text-align: right;
+}
+#add_new tbody td:last-child { text-align: left }
+div#add_new_head_wrap {
+    height: 60px;
+}
+.dataTables_scrollHead,.dataTables_scrollBody {
+    width: 100% !important;
+    overflow-y: scroll !important;
+}
+div#add_new_body_wrap {
+    overflow-x: hidden !important;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    div#add_new_body_wrap {
+       zoom:83% !important;
+	}
+	div#add_new_head_wrap {
+    	zoom:83% !important;
+	}
+	div#add_new_table_wrap{
+		width:100% !important;
+	}
+}

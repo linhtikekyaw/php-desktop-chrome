@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
+		CakePHP: the rapid development php framework:
+		Accepth	</title>
+	<link href="/cakephp/favicon.ico" type="image/x-icon" rel="icon" /><link href="/cakephp/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="stylesheet" type="text/css" href="/cakephp/css/cake.generic.css" />
+	<link rel="stylesheet" type="text/css" href="/cakephp/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/cakephp/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="/cakephp/css/jquery.dataTables.css" />
+	
+	<script type="text/javascript" src="/cakephp/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/cakephp/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/cakephp/js/bootswatch.js"></script>
+	<script type="text/javascript" src="/cakephp/js/jquery.dataTables.min.js"></script>
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body class="" style="">
+<!--
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand">販売管理者システム</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+        </div>
+      </div>
+    </div>
+-->
+        <!-- /.row -->
+    		
+			<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"></span>受注入力</h3>
+                </div>
+                <div class="col-md-12">            
+                          <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-default"><-前</a>
+						    <a href="#" class="btn btn-default">次-></a>
+						    <a href="#" class="btn btn-default" id="update">更新</a>
+						    <a href="#" class="btn btn-default">取消</a>
+						    <a href="#" class="btn btn-default">閉じる</a>
+						  </div>
+						  <br><br><hr>
+					 <div class="col-md-12 pull-left">
+						  <table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>受注番号</td>
+								<td><input type="text" id="" name="ACCNO" value="0000000140"></td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+						 <div class="col-md-5 pull-left">				
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>見積番号</td>
+								<td><input type="text" id="" name="ESTNO" value=""></td>
+							</tr>
+							<tr>
+								<td>得意先コード</td>
+								<td><input type="text" id="code" name="CUSTCD" value="77"></td>
+							</tr>
+							<tr>
+								<td>納入先コード</td>
+								<td><input type="text" id="" name="CUSTCD3" value="77"></td>
+							</tr>
+							<tr>
+								<td>納入先名</td>
+								<td>
+									<input type="text" id="" name="CUSTNM3" value="ああああああああ">
+								</td>
+							</tr>
+							<tr>
+								<td>相手先発注番号</td>
+								<td>
+									<input type="text" id="" name="CUATACCNO" value="">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-5 pull-right">
+					<table border="0" cellspacing="5" cellpadding="5" id="data_form">
+						<tbody>
+							<tr>
+								<td>受注日</td>
+								<td><input type="text" class="datetimepicker" id="ACCDT" name="min" value="0000-00-00 00:00:00"></td>
+							</tr>
+							<tr>
+								<td>納期</td>
+								<td><input type="text" class="datetimepicker" name="RETURNDT" value="0000-00-00 00:00:00"></td>
+							</tr>
+							<tr>
+								<td>出荷予定日</td>
+								<td><input type="text" class="datetimepicker" name="SHIDT" value="0000-00-00 00:00:00"></td>
+							</tr>
+							<tr>
+								<td>担当者</td>
+								<td><input type="text" class="" name="PERSONCD" value="9"></td>
+							</tr>
+							<tr>
+								<td>伝票備考</td>
+								<td><input type="text" class="" name="BIKO" value=""></td>
+							</tr>
+							<tr>
+								<td>完了区分</td>
+								<td>ACCKB
+									<label><input type="radio" name="hyouka" value="good" checked="checked">未完</label>&nbsp;
+									<label><input type="radio" name="hyouka" value="bad">完了</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+						  <table class="table table-striped table-bordered hover" style="table-layout:fixed" id="add_new">
+							    <thead>
+							      <tr>
+							        <th rowspan="2">No</th>
+							        <th>明細区部</th>
+							        <th>商品コード</th>
+							        <th>商品名</th>
+							        <th>ケース数</th>
+							        <th>入数</th>
+							        <th>販売単価</th>
+							        <th>金額</th>
+							        <th rowspan="2">備考</th>
+							        <th rowspan="2"></th>
+							      </tr>
+							      <tr>
+							        <th>税区分</th>
+							        <th></th>
+							        <th>規格</th>
+							        <th>バラ数</th>
+							        <th>単位</th>
+							        <th>標準単価</th>
+							        <th></th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							    							    								<tr>
+									<td rowspan="2"></td>
+									<td class="LINCLS">1</td>
+									<td class="ITEMCD">000010</td>
+									<td class="ITEMNM1">商品000010</td>
+									<td class="CAQTY">5.000000</td>
+									<td class="IRQTY">100000.000000</td>
+									<td class="SALPRC">5.000000</td>
+									<td class="AMT">2500000.000000</td>
+									<td class="BIKO1"></td>
+									<td rowspan="2"><button class="btn btn-primary add_record">追加</button><button class="btn btn-danger del_record">削除</button></td>
+							      </tr>
+							      <tr>
+									<td class="TAXKB">1</td>
+									<td></td>
+									<td class="ITEMNM2">あ</td>
+									<td class="BAQTY">0.000000</td>
+									<td class="UNIT">000001</td>
+									<td class="PRC">0.000000</td>
+									<td></td>
+									<td class="BIKO2"></td>
+							      </tr>
+															    </tbody>
+							  </table>
+							  <div class="col-md-3 pull-right">				
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<th class="bg-primary">合計金額</th>
+								<td><input type="text" id="" name="min" value=""></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<script type="text/javascript" src="/cakephp/js/item.js"></script>
+ </div>
+      <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <div id="siteBottomInner" class="innerBox">
+          </div>
+        </div>
+        <div id="siteBottom">
+        <div id="siteBottomInner" class="innerBox">
+        </div>
+        </div>
+      </div>
+      </footer>
+<div class="container">
+<table class="cake-sql-log" id="cakeSqlLog_143770630155b1a83d46f716_23244077" summary="Cake SQL Log" cellspacing="0"><caption>(default) 2 queries took 0 ms</caption>	<thead>
+		<tr><th>Nr</th><th>Query</th><th>Error</th><th>Affected</th><th>Num. rows</th><th>Took (ms)</th></tr>
+	</thead>
+	<tbody>
+	<tr><td>1</td><td>SELECT `Accepth`.`ACCNO`, `Accepth`.`CUSTCD`, `Accepth`.`CUSTCD2`, `Accepth`.`CUSTCD3`, `Accepth`.`CUSTNM3`, `Accepth`.`ACCDT`, `Accepth`.`RETURNDT`, `Accepth`.`SHIDT`, `Accepth`.`PERSONCD`, `Accepth`.`CUATACCNO`, `Accepth`.`BIKO`, `Accepth`.`COPYNO`, `Accepth`.`ACCKB`, `Accepth`.`AMT`, `Accepth`.`TAX`, `Accepth`.`TOTAL`, `Accepth`.`ROOT`, `Accepth`.`ENDKB`, `Accepth`.`ESTNO`, `Accepth`.`INSUSER`, `Accepth`.`INSPROG`, `Accepth`.`INSDT`, `Accepth`.`UPDUSER`, `Accepth`.`UPDPRG`, `Accepth`.`UPDDT`, `Accepth`.`SECTCD` FROM `cakephp`.`t_accepth` AS `Accepth`   WHERE `Accepth`.`accno` = &#039;0000000140&#039;    LIMIT 1</td><td></td><td style="text-align: right">1</td><td style="text-align: right">1</td><td style="text-align: right">0</td></tr>
+<tr><td>2</td><td>SELECT `Acceptd`.`ACCNO`, `Acceptd`.`SEQNO`, `Acceptd`.`LINENO`, `Acceptd`.`LINCLS`, `Acceptd`.`ITEMCD`, `Acceptd`.`ITEMNM1`, `Acceptd`.`ITEMNM2`, `Acceptd`.`CAQTY`, `Acceptd`.`BAQTY`, `Acceptd`.`IRQTY`, `Acceptd`.`UNIT`, `Acceptd`.`PRC`, `Acceptd`.`SALPRC`, `Acceptd`.`AMT`, `Acceptd`.`TAX`, `Acceptd`.`WEIGHT`, `Acceptd`.`BIKO1`, `Acceptd`.`BIKO2`, `Acceptd`.`TAXKB`, `Acceptd`.`INSUSER`, `Acceptd`.`INSPROG`, `Acceptd`.`INSDT`, `Acceptd`.`UPDUSER`, `Acceptd`.`UPDPRG`, `Acceptd`.`UPDDT` FROM `cakephp`.`t_acceptd` AS `Acceptd`   WHERE `Acceptd`.`ACCNO` = (&#039;0000000140&#039;)</td><td></td><td style="text-align: right">1</td><td style="text-align: right">1</td><td style="text-align: right">0</td></tr>
+	</tbody></table>
+	
+	<script type="text/javascript" src="/cakephp/js/common2.js"></script>
+</div>
+</body>
+</html>

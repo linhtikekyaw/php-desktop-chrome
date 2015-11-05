@@ -1,0 +1,156 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"></span>取り引き先一覧</h3>
+                </div>
+                <div class="col-md-12">            
+                          <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-default">検索</a>
+						    <a href="#" id="add_new" class="btn btn-default">新規</a>
+						    <a href="#" class="btn btn-default">修正</a>
+						    <a href="#" class="btn btn-default">削除</a>
+						    <a href="#" class="btn btn-default">コピー</a>
+						    <a href="#" class="btn btn-default">参照</a>
+						    <a href="#" class="btn btn-default">印刷</a>
+						    <a href="#" class="btn btn-default">CSV</a>
+						    <a href="#" class="btn btn-default">発注登録</a>
+						    <a href="#" class="btn btn-default">取消</a>
+						    <a href="#" class="btn btn-default">閉じる</a>
+						  </div>
+						  <div class="btn-group btn-group-justified">
+						    <a href="#" class="btn btn-primary">F1</a>
+						    <a href="#" class="btn btn-primary">F3</a>
+						    <a href="#" class="btn btn-primary">F5</a>
+						    <a href="#" class="btn btn-primary">F6</a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary">F7</a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary"></a>
+						    <a href="#" class="btn btn-primary">F11</a>
+						    <a href="#" class="btn btn-primary">F12</a>
+						  </div>
+						  <br><br><hr>
+				<div class="col-md-5 pull-left">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>取引先区分</td>
+								<td>
+									<SELECT>
+										<OPTION value="0" selected>両方</OPTION>
+										<OPTION value="1">得意先</OPTION>
+										<OPTION value="2">仕入先</OPTION>
+									</SELECT></td>
+							</tr>
+							<tr>
+								<td>取引先コード</td>
+								<td><input type="text" id="code" name=""></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="btn-group">
+									<button type="button" class="btn btn-default">ア</button>
+									<button type="button" class="btn btn-default">カ</button>
+									<button type="button" class="btn btn-default">サ</button>
+									<button type="button" class="btn btn-default">タ</button>
+									<button type="button" class="btn btn-default">ナ</button>
+									<button type="button" class="btn btn-default">ハ</button>
+									<button type="button" class="btn btn-default">マ</button>
+									<button type="button" class="btn btn-default">ヤ</button>
+									<button type="button" class="btn btn-default">ラ</button>
+									<button type="button" class="btn btn-default">ワ</button>
+									<button type="button" class="btn btn-default">ABC</button>
+									<button type="button" class="btn btn-default">全</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>取引先カタカナ名</td>
+								<td>
+									<input type="text" id="" name="">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-5 ">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<td>取引先担当者名</td>
+								<td><input type="text" class="datetimepicker" id="min" name="min"></td>
+							</tr>
+							<tr>
+								<td>分類１</td>
+								<td>
+									<SELECT>
+										<OPTION value="2" selected>　　</OPTION>
+										<OPTION value="1">　　</OPTION>
+									</SELECT>
+								</td>
+							</tr>
+							<tr>
+								<td>分類２</td>
+								<td>
+									<SELECT>
+										<OPTION value="2" selected>　　</OPTION>
+										<OPTION value="1">　　</OPTION>
+									</SELECT>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+						  <table class="table table-bordered hover" style="table-layout:fixed" id="example">
+							    <thead>
+							      <tr class="bg-primary">
+							        <th>取り引きコード</th>
+							        <th>フリガナ</th>
+							        <th>取引先名</th>
+							        <th>取引先区分</th>
+							        <th>担当者</th>
+							        <th>自社担当者</th>
+							        <th>自社担当者名</th>
+							        
+							        <th>郵便番号</th>
+							        <th>住所１</th>
+							        <th>住所2</th>
+							        <th>電話番号</th>
+							        <th>FAX番号</th>
+							        <th>備考１</th>
+							        <th>備考２</th>
+							        <th>更新日</th>
+							      </tr>
+							    </thead>
+							    <tbody id="data_pass">
+							    <?php  foreach($custs as $key => $val){ ?>
+							    <?php //print_r($val);?>
+							      <tr>
+									<td class="data" data-custcd='<?php echo $val["Cust"]["CUSTCD"]; ?>'><?php echo $val['Cust']['CUSTCD']; ?></td>
+									<td><?php echo $val['Cust']['CUSTJNM']; ?></td>
+									<td><?php echo $val['Cust']['CUSTSNM']; ?></td>
+									<td><?php echo $val['Cust']['CUSTKB']; ?></td>
+									<td><?php echo $val['Cust']['CUSTPRSN']; ?></td>
+									<td><?php echo $val['Cust']['PERSONCD']; ?></td>
+									<td><?php echo $val['Cust']['CUSTSNM']; ?></td>
+									
+									<td><?php echo $val['Cust']['ZIPCD']; ?></td>
+									<td><?php echo $val['Cust']['ADD1']; ?></td>
+									<td><?php echo $val['Cust']['ADD2']; ?></td>
+									<td><?php echo $val['Cust']['TELNO']; ?></td>
+									<td><?php echo $val['Cust']['FAXNO']; ?></td>
+									<td><?php echo $val['Cust']['BIKO1']; ?></td>
+									<td><?php echo $val['Cust']['BIKO2']; ?></td>
+									<td><?php echo $val['Cust']['UPDDT']; ?></td>
+							      </tr>
+							    <?php } ?>
+							    </tbody>
+							  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

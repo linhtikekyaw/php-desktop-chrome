@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	<title>
+		CakePHP: the rapid development php framework:
+		Accepth	</title>
+	<link href="/app/webroot/favicon.ico" type="image/x-icon" rel="icon" /><link href="/app/webroot/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/cake.generic.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="/app/webroot/css/jquery.dataTables.css" />
+	
+	<script type="text/javascript" src="/app/webroot/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/bootswatch.js"></script>
+	<script type="text/javascript" src="/app/webroot/js/jquery.dataTables.min.js"></script>
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body class="" style="">
+<!--
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid"">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand">販売管理者システム</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+        </div>
+      </div>
+    </div>
+-->
+        <!-- /.row -->
+    		
+			<div class="container top">
+	<div class="row">
+	        <div class="col-md-3">  
+				<h3 class="bg-primary">受注一覧</h3>
+			</div>
+	</div>
+	<div class="btn-group btn-group-justified">
+		<a href="#" class="btn btn-default" id="search">検索</a>
+		<a href="/index.php/accepth/edit/" class="btn btn-default">新規</a>
+		<a href="#" class="btn btn-default edit">修正</a>
+		<a href="#" class="btn btn-default">削除</a>
+		<a href="#" class="btn btn-default">コピー</a>
+		<a href="#" class="btn btn-default">参照</a>
+		<a href="#" class="btn btn-default">印刷</a>
+		<a href="#" class="btn btn-default">CSV</a>
+		<a href="#" class="btn btn-default">発注登録</a>
+		<a href="#" class="btn btn-default">取消</a>
+		<a href="#" class="btn btn-default">閉じる</a>
+	</div>
+	<div class="btn-group btn-group-justified">
+		<a href="#" class="btn btn-primary">F1</a>
+		<a href="#" class="btn btn-primary">F3</a>
+		<a href="#" class="btn btn-primary">F5</a>
+		<a href="#" class="btn btn-primary">F6</a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary">F7</a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary"></a>
+		<a href="#" class="btn btn-primary">F11</a>
+		<a href="#" class="btn btn-primary">F12</a>
+	</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">                
+                <div class="panel panel-default">
+					<div class="panel-heading clearfix">
+						<div class="box pull-left">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<th>受注番号</th>
+								<td><input type="text" size="10" id="" name="min"></td>
+							</tr>
+							<tr>
+								<th>得意先コード</th>
+								<td><input type="text" id="code" name="max"></td><td><input type="text" id="custname" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<th>担当者</th>
+								<td><input type="text" id="" name="min"></td>
+							</tr>
+							<tr>
+								<th>完了区分</th>
+								<td>
+									<SELECT>
+																				<OPTION value="0" selected>未完</OPTION>
+																				<OPTION value="1" >完了</OPTION>
+																			</SELECT>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box pull-right">
+					<table border="0" cellspacing="5" cellpadding="5">
+						<tbody>
+							<tr>
+								<th>受注日</th>
+								<td><input type="text" class="datetimepicker" id="min" name="min"></td>
+								<td class="short">～</td>
+								<td><input type="text" class="datetimepicker" id="max" name="max"></td>
+							</tr>
+							<tr>
+								<th>納期</th>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td class="short">～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+							<tr>
+								<th>出荷予定日</th>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td class="short">～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+							<tr>
+								<th>更新日</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+								<td class="short">～</td>
+								<td><input type="text" class="datetimepicker" name="min"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+						  <table class="table table-bordered hover" style="table-layout:fixed" id="example">
+							    <thead>
+							      <tr class="bg-primary">
+							        <th width="10px">No</th>
+							        <th width="70px">受注番号</th>
+							        <th width="70px">受注状態</th>
+							        <th width="100px">得意先コード</th>
+							        <th width="200px">得意先名</th>
+							        <th width="80px">受注日</th>
+							        <th width="70px">完了区分</th>
+							        <th width="80px">納期</th>
+							        <th width="80px">出荷予定日</th>
+							        <th width="100px">納入先コード</th>
+							        <th width="200px">納入先名</th>
+							        
+							        <th width="100px">担当者</th>
+							        <th width="100px">担当者名</th>
+							        <th width="100px">金額計</th>
+							        <th width="100px">受注金額</th>
+							        <th width="120px">相手先発注番号</th>
+							        <th width="100px">見積番号</th>
+							        <th width="100px">備考</th>
+							        <th width="100px">更新日</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000001">0000000001</td>
+									<td width="70px">受注</td>
+									<td>00001</td>
+									<td>清水商店</td>
+									<td class="right">2015/07/15</td>
+									<td>完了</td>
+									<td class="right">2015/07/24</td>
+									<td class="right">2015/07/28</td>
+									<td>111</td>
+									<td>テスト</td>
+									
+									<td>テストテスト</td>
+									<td></td>
+									<td class="right">816000.00</td>
+									<td class="right">816000.00</td>
+									<td>22222</td>
+									<td></td>
+									<td>ああああああ</td>
+									<td class="right">2015-08-13 05:37:13</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000002">0000000002</td>
+									<td width="70px">受注</td>
+									<td>5555555555</td>
+									<td>取引先名５６７８９０１２３４５</td>
+									<td class="right">2015/07/19</td>
+									<td>未完了</td>
+									<td class="right">2015/07/22</td>
+									<td class="right">2015/07/31</td>
+									<td>111</td>
+									<td>ああああああああアアアアア</td>
+									
+									<td>リン</td>
+									<td></td>
+									<td class="right">312000.00</td>
+									<td class="right">312000.00</td>
+									<td>333</td>
+									<td>333</td>
+									<td>aaaaaa</td>
+									<td class="right">2015-08-03 10:15:40</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000003">0000000003</td>
+									<td width="70px">受注</td>
+									<td>00002</td>
+									<td>岡田商店</td>
+									<td class="right">2015/07/08</td>
+									<td>未完了</td>
+									<td class="right">2015/07/09</td>
+									<td class="right">1970/01/01</td>
+									<td></td>
+									<td></td>
+									
+									<td>リンタイチョ</td>
+									<td></td>
+									<td class="right">828000.00</td>
+									<td class="right">828000.00</td>
+									<td></td>
+									<td></td>
+									<td>テスト</td>
+									<td class="right">2015-08-17 07:59:56</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000004">0000000004</td>
+									<td width="70px">受注</td>
+									<td>00</td>
+									<td>株式会社アクト</td>
+									<td class="right">2015/07/14</td>
+									<td>未完了</td>
+									<td class="right">2015/07/22</td>
+									<td class="right">2015/07/23</td>
+									<td></td>
+									<td>a</td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">108000.00</td>
+									<td class="right">108000.00</td>
+									<td>111</td>
+									<td></td>
+									<td></td>
+									<td class="right">2015-08-17 07:56:24</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000005">0000000005</td>
+									<td width="70px">受注</td>
+									<td>000145</td>
+									<td>長田産業</td>
+									<td class="right">2015/07/12</td>
+									<td>未完了</td>
+									<td class="right">2015/07/22</td>
+									<td class="right">2015/07/24</td>
+									<td>211</td>
+									<td>atea</td>
+									
+									<td>test</td>
+									<td></td>
+									<td class="right">600000.00</td>
+									<td class="right">600000.00</td>
+									<td>1111</td>
+									<td></td>
+									<td></td>
+									<td class="right">2015-08-03 09:49:41</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000006">0000000006</td>
+									<td width="70px">受注</td>
+									<td>0001451</td>
+									<td>長田産業　第２工場</td>
+									<td class="right">2015/07/12</td>
+									<td>未完了</td>
+									<td class="right">2015/07/14</td>
+									<td class="right">2015/07/23</td>
+									<td></td>
+									<td>aaaa</td>
+									
+									<td>aaaa</td>
+									<td></td>
+									<td class="right">816000.00</td>
+									<td class="right">816000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000007">0000000007</td>
+									<td width="70px">受注</td>
+									<td>0000000025</td>
+									<td>松元社</td>
+									<td class="right">2015/08/04</td>
+									<td>完了</td>
+									<td class="right">2015/08/18</td>
+									<td class="right">2015/08/25</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">240000.00</td>
+									<td class="right">240000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right">2015-08-13 08:19:06</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000008">0000000008</td>
+									<td width="70px">受注</td>
+									<td>0001451</td>
+									<td>長田産業　第２工場</td>
+									<td class="right">2015/08/27</td>
+									<td>未完了</td>
+									<td class="right">2015/08/28</td>
+									<td class="right">2015/08/29</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">168000.00</td>
+									<td class="right">168000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000009">0000000009</td>
+									<td width="70px">受注</td>
+									<td>36</td>
+									<td>渡辺工業</td>
+									<td class="right">1970/01/01</td>
+									<td>未完了</td>
+									<td class="right">1970/01/01</td>
+									<td class="right">1970/01/01</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">552000.00</td>
+									<td class="right">552000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000010">0000000010</td>
+									<td width="70px">受注</td>
+									<td>66602</td>
+									<td>鈴木電気</td>
+									<td class="right">1970/01/01</td>
+									<td>未完了</td>
+									<td class="right">1970/01/01</td>
+									<td class="right">1970/01/01</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">24000.00</td>
+									<td class="right">24000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000011">0000000011</td>
+									<td width="70px">受注</td>
+									<td>00002</td>
+									<td>岡田商店</td>
+									<td class="right">2015/08/10</td>
+									<td>未完了</td>
+									<td class="right">2015/08/12</td>
+									<td class="right">2015/08/20</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">360000.00</td>
+									<td class="right">360000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000012">0000000012</td>
+									<td width="70px">受注</td>
+									<td>1</td>
+									<td>吉田産業</td>
+									<td class="right">2015/08/02</td>
+									<td>未完了</td>
+									<td class="right">2015/08/04</td>
+									<td class="right">2015/08/19</td>
+									<td></td>
+									<td>111</td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">480000.00</td>
+									<td class="right">480000.00</td>
+									<td>11111</td>
+									<td></td>
+									<td></td>
+									<td class="right">2015-08-03 10:02:16</td>
+							      </tr>
+							    							    							      <tr>
+							      	<td class="right"></td>
+									<td data-accno="0000000013">0000000013</td>
+									<td width="70px">受注</td>
+									<td>0000000025</td>
+									<td>松元社</td>
+									<td class="right">1970/01/01</td>
+									<td>未完了</td>
+									<td class="right">1970/01/01</td>
+									<td class="right">1970/01/01</td>
+									<td></td>
+									<td></td>
+									
+									<td></td>
+									<td></td>
+									<td class="right">240000.00</td>
+									<td class="right">240000.00</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="right"></td>
+							      </tr>
+							    							    </tbody>
+							  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<script type="text/javascript" src="/app/webroot/js/functionkey.js"></script>
+ </div>
+      <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <div id="siteBottomInner" class="innerBox">
+          </div>
+        </div>
+        <div id="siteBottom">
+        <div id="siteBottomInner" class="innerBox">
+        </div>
+        </div>
+      </div>
+      </footer>
+<div class="container">
+<table class="cake-sql-log" id="cakeSqlLog_1446684623563aa7cff08ee2_18972200" summary="Cake SQL Log" cellspacing="0"><caption>(default) 7 queries took 0 ms</caption>	<thead>
+		<tr><th>Nr</th><th>Query</th><th>Error</th><th>Affected</th><th>Num. rows</th><th>Took (ms)</th></tr>
+	</thead>
+	<tbody>
+	<tr><td>1</td><td>SELECT `Accepth`.`ACCNO`, `Accepth`.`CUSTCD`, `Accepth`.`CUSTCD2`, `Accepth`.`CUSTCD3`, `Accepth`.`CUSTNM3`, `Accepth`.`ACCDT`, `Accepth`.`RETURNDT`, `Accepth`.`SHIDT`, `Accepth`.`PERSONCD`, `Accepth`.`CUATACCNO`, `Accepth`.`BIKO`, `Accepth`.`COPYNO`, `Accepth`.`ACCKB`, `Accepth`.`AMT`, `Accepth`.`TAX`, `Accepth`.`TOTAL`, `Accepth`.`ROOT`, `Accepth`.`ENDKB`, `Accepth`.`ESTNO`, `Accepth`.`INSUSER`, `Accepth`.`INSPROG`, `Accepth`.`INSDT`, `Accepth`.`UPDUSER`, `Accepth`.`UPDPRG`, `Accepth`.`UPDDT`, `Accepth`.`SECTCD` FROM `cakephp`.`t_accepth` AS `Accepth`   WHERE 1 = 1</td><td></td><td style="text-align: right">13</td><td style="text-align: right">13</td><td style="text-align: right">0</td></tr>
+<tr><td>2</td><td>SELECT `Acceptd`.`ID`, `Acceptd`.`ACCNO`, `Acceptd`.`SEQNO`, `Acceptd`.`LINENO`, `Acceptd`.`LINCLS`, `Acceptd`.`ITEMCD`, `Acceptd`.`ITEMNM1`, `Acceptd`.`ITEMNM2`, `Acceptd`.`CAQTY`, `Acceptd`.`BAQTY`, `Acceptd`.`IRQTY`, `Acceptd`.`UNIT`, `Acceptd`.`PRC`, `Acceptd`.`SALPRC`, `Acceptd`.`AMT`, `Acceptd`.`TAX`, `Acceptd`.`WEIGHT`, `Acceptd`.`BIKO1`, `Acceptd`.`BIKO2`, `Acceptd`.`TAXKB`, `Acceptd`.`INSUSER`, `Acceptd`.`INSPROG`, `Acceptd`.`INSDT`, `Acceptd`.`UPDUSER`, `Acceptd`.`UPDPRG`, `Acceptd`.`UPDDT` FROM `cakephp`.`t_acceptd` AS `Acceptd`   WHERE `Acceptd`.`ACCNO` IN (&#039;0000000001&#039;, &#039;0000000002&#039;, &#039;0000000003&#039;, &#039;0000000004&#039;, &#039;0000000005&#039;, &#039;0000000006&#039;, &#039;0000000007&#039;, &#039;0000000008&#039;, &#039;0000000009&#039;, &#039;0000000010&#039;, &#039;0000000011&#039;, &#039;0000000012&#039;, &#039;0000000013&#039;)</td><td></td><td style="text-align: right">23</td><td style="text-align: right">23</td><td style="text-align: right">0</td></tr>
+<tr><td>3</td><td>SELECT `Cust`.`CUSTCD`, `Cust`.`CUSTSNM` FROM `cakephp`.`m_cust` AS `Cust`   WHERE 1 = 1</td><td></td><td style="text-align: right">135</td><td style="text-align: right">135</td><td style="text-align: right">0</td></tr>
+<tr><td>4</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CODR&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>5</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;TAXKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+<tr><td>6</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;ENDKB&#039;</td><td></td><td style="text-align: right">2</td><td style="text-align: right">2</td><td style="text-align: right">0</td></tr>
+<tr><td>7</td><td>SELECT `Mconst`.`CONSTCLCD`, `Mconst`.`CONSTCD`, `Mconst`.`CONSTNM`, `Mconst`.`PORM`, `Mconst`.`UPDDT`, `Mconst`.`TRNKB1`, `Mconst`.`TRNKB2`, `Mconst`.`TRNKB3`, `Mconst`.`ADDKB1`, `Mconst`.`ADDKB2`, `Mconst`.`ADDKB3` FROM `cakephp`.`m_const` AS `Mconst`   WHERE `Mconst`.`CONSTCLCD` = &#039;CUSTKB&#039;</td><td></td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">0</td></tr>
+	</tbody></table>
+	
+	<script type="text/javascript" src="/app/webroot/js/common.js"></script>
+</div>
+</body>
+</html>
